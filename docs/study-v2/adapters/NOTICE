@@ -1,0 +1,11 @@
+This FLUX Model is licensed by Black Forest Labs Inc. under the FLUX
+Non-Commercial License. Copyright Black Forest Labs Inc. IN NO EVENT SHALL
+BLACK FOREST LABS INC. BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH USE OF THIS MODEL.
+
+WeFit modifies the output projection of the FLUX.2 Klein 9B KV image
+transformer on the final upper-body rendering step with separately trained
+low-rank matrices. The original model files are downloaded separately and
+remain frozen. These academic research adapters are distributed by WeFit
+under the accompanying terms. Black Forest Labs did not create or endorse them.

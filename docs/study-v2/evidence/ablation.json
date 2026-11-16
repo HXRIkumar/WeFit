@@ -1,0 +1,56 @@
+{
+  "canvas": [
+    256,
+    320
+  ],
+  "methods": {
+    "frozen": {
+      "images": 5,
+      "median_s": 42.423,
+      "garment_rgb_mae": 26.74914264678955,
+      "outside_rgb_mae": 6.058213710784912,
+      "skipped_blocks": [],
+      "skipped_q4_tensor_bytes": 0
+    },
+    "lora": {
+      "images": 5,
+      "median_s": 43.498,
+      "garment_rgb_mae": 27.688154029846192,
+      "outside_rgb_mae": 6.4296056747436525,
+      "skipped_blocks": [],
+      "skipped_q4_tensor_bytes": 0
+    },
+    "lora-skip-one": {
+      "images": 5,
+      "median_s": 40.742,
+      "garment_rgb_mae": 27.822576332092286,
+      "outside_rgb_mae": 7.838756847381592,
+      "skipped_blocks": [
+        8
+      ],
+      "skipped_q4_tensor_bytes": 122683904
+    },
+    "lora-skip-two": {
+      "images": 5,
+      "median_s": 39.924,
+      "garment_rgb_mae": 30.520428466796876,
+      "outside_rgb_mae": 9.940178203582764,
+      "skipped_blocks": [
+        8,
+        7
+      ],
+      "skipped_q4_tensor_bytes": 245367808
+    },
+    "lora-mask-quarter-head": {
+      "images": 5,
+      "median_s": 42.088,
+      "garment_rgb_mae": 27.546958351135252,
+      "outside_rgb_mae": 6.453009510040284,
+      "skipped_blocks": [],
+      "skipped_q4_tensor_bytes": 0
+    }
+  },
+  "head_columns_masked": 1024,
+  "base_file_bytes_removed": 0,
+  "design": "Five methods, five images; rotate method order for each image after a train-image warm-up."
+}

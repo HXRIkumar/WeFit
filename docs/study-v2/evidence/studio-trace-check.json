@@ -1,0 +1,15 @@
+{
+  "test": "Browser registration, uploaded real person and flat-lay shirt, saved generated look, requested full-frame trace, auto-loaded into inspector and exported numeric JSON.",
+  "canvas": [
+    576,
+    768
+  ],
+  "blocks": 32,
+  "steps": 3,
+  "photo_wall_s": 131.865,
+  "trace_wall_s": 131.309,
+  "same_numeric_trace_as_independent_cli": true,
+  "browser_errors": 0,
+  "device": "Apple M4 Air, 24 GB",
+  "utc": "2026-11-16T13:09:18.720406+00:00"
+}

@@ -1,0 +1,66 @@
+{
+  "study": "WeFit native tops \u00b7 frozen and compact adapter",
+  "packets_prepared": 2,
+  "completed_reviewer_packets": 0,
+  "rated_pairs": 0,
+  "preferences": {},
+  "ratings": {
+    "frozen": {
+      "neckline": {
+        "n": 0,
+        "mean": null
+      },
+      "shoulders": {
+        "n": 0,
+        "mean": null
+      },
+      "sleeves": {
+        "n": 0,
+        "mean": null
+      },
+      "fabric": {
+        "n": 0,
+        "mean": null
+      },
+      "anatomy": {
+        "n": 0,
+        "mean": null
+      },
+      "scene": {
+        "n": 0,
+        "mean": null
+      }
+    },
+    "lora": {
+      "neckline": {
+        "n": 0,
+        "mean": null
+      },
+      "shoulders": {
+        "n": 0,
+        "mean": null
+      },
+      "sleeves": {
+        "n": 0,
+        "mean": null
+      },
+      "fabric": {
+        "n": 0,
+        "mean": null
+      },
+      "anatomy": {
+        "n": 0,
+        "mean": null
+      },
+      "scene": {
+        "n": 0,
+        "mean": null
+      }
+    }
+  },
+  "preference_agreement": {
+    "agreeing_pairs": 0,
+    "comparable_pairs": 0,
+    "fraction": null
+  }
+}

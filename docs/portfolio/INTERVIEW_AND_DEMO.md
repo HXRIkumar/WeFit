@@ -1,5 +1,11 @@
 # Explaining WeFit in an interview
 
+## Demonstrate the V2 fine-tuning experiment
+
+Open **Under the hood** in the studio or download the offline inspector. Pick a photograph, then click a patch inside the shirt outline. Choose a final-layer input and move the output connection slider. The page multiplies the number seen at that patch (the activation) by the connection’s stored coefficient (the weight). It shows how the LoRA correction changes that contribution. Choose a nearby patch and the coefficient stays fixed while the photo response changes. To measure your own example, click **Trace this look** on a saved shirt in the local Mac studio. [Interactive inspector download](https://github.com/HXRIkumar/WeFit/releases/download/v2.0.0/inside-klein.html)
+
+“I kept the original image model fixed and trained two small matrices to correct its last image update. The optimizer changed 16,896 numbers over 420 updates. Five validation photos selected the weights. I then compared the decoded pictures on five previously unseen photographs. I measured whether skipping the quietest blocks or storing their weights with fewer bits actually helped.” For a concrete comparison, photo 15840 improved from 58.04 to 54.11 garment pixel error, while photo 13283 went from 8.55 to 11.96. Lower is better. A cached replay of a different adapter reproduced a full render in under one second at the study resolution. [V2 study and results](../study-v2/README.md) · [Paired test images and scores](../study-v2/evidence/held-out.csv)
+
 ## A thirty second introduction
 
 “I started with a collaborator’s virtual fitting app. I built and evaluated the Apple Silicon rendering path. It takes a person photo and a garment photo, finds the clothing, and uses a pretrained 9-billion-parameter image editor to render the change. I cached repeated work, limited the area the model redraws and added checks for bad edits. With the same shirt, seed and three rendering steps, the clothing region reduced median model-service time from 100.90 to 83.17 seconds across three pairs on one M4 Air.”
@@ -23,7 +29,7 @@
 
 ## Which work was yours?
 
-The original collaborator supplied the web application, account and job infrastructure, geometric renderer and optional model adapters. Black Forest Labs trained Klein, the MFLUX community supplied the MLX Q4 conversion, and FASHN supplied the human parser. The WeFit contribution is the local integration, exact text caching, memory-bounded reference reuse, compiled execution, clothing conditioning and region rendering, source preservation, failure handling and measured comparisons.
+The original collaborator supplied the web application, account and job infrastructure, geometric renderer and optional model adapters. Black Forest Labs trained Klein, the MFLUX community supplied the MLX Q4 conversion, and FASHN supplied the human parser. The WeFit contribution is the local integration, exact text caching, memory-bounded reference reuse, compiled execution, clothing conditioning and region rendering, source preservation, failure handling and measured comparisons. In V2 I trained the adapter, added probes inside the renderer, verified last-step replay against full generations, and measured the real quality cost of skipping or compressing layers.
 
 If an interviewer asks what was switched off, explain the text encoder. We computed its two fixed outputs in advance. The image transformer and its decoder still run. Arbitrary free-text instructions would require another embedding. A Mac also restarted during an early unrestricted experiment. Its log recorded 94 seconds without a watchdog check-in and low swap. Subsequent bounded-cache runs completed. The log leaves the initiating cause uncertain.
 

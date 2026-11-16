@@ -1,0 +1,30 @@
+{
+  "seed": 20261116,
+  "rank": 4,
+  "steps": 3,
+  "epochs": 30,
+  "optimizer_updates": 420,
+  "optimizer_and_train_scoring_seconds": 2.9513464999981807,
+  "selected_epoch": 14,
+  "selection": "Lowest mean validation garment latent MSE among trained epochs. Epoch zero is the baseline.",
+  "optimizer": "CPU AdamW, lr 0.001, weight decay 0.01, gradient norm limit 1.0; one photograph per update",
+  "objective": "Mean squared error against target VAE tokens in the annotated garment; add 0.25 times squared change outside.",
+  "trainable_parameters": 16896,
+  "backbone_trainable_parameters": 0,
+  "training_images": 14,
+  "validation_images": 5,
+  "baseline_train_mse": 0.5956164108855384,
+  "selected_train_mse": 0.5450006978852409,
+  "baseline_val_mse": 0.717855042219162,
+  "selected_val_mse": 0.689316987991333,
+  "adapter_sha256": "acdc12ff631229e293098016c7bbe1001e42fcda5e4b22ae1a9f574bed7bbefd",
+  "adapter_bytes": 68834,
+  "base_checkpoint_sha256": {
+    "transformer/0.safetensors": "d2d305be17d11b98f2353a4318495904a3c74259e9a1905b2c93fb5f88232f9e",
+    "transformer/1.safetensors": "68804583c986f32493718e9bae3f8239db98a0526362fa9262a6342a6a59994f",
+    "transformer/2.safetensors": "20e903436caed8d9e048117ae28aef4425bcd367c7dc280618376073782cb337",
+    "vae/0.safetensors": "ab26bf1613e6b51a955bfaf05409e2a16138a072ba0bb7f4fc768236fb4a990b"
+  },
+  "revision": "d144dcb1f70540f581ed99930ee61aac21b5c6d6",
+  "torch": "2.15.0"
+}

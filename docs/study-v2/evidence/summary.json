@@ -1,0 +1,57 @@
+{
+  "first_request": {
+    "index": 0,
+    "phase": "first",
+    "case": "blue-product",
+    "started_utc": "2026-11-16T11:09:51.580153+00:00",
+    "person_sha256": "b9d1db3db7c0fd4d749649db8f93ce32acafe11d6c11093cd4dc0f6dbfd96273",
+    "garment_sha256": "59d8312b107e23f119279cb63ee3109da212b7137ac23774e005e12697ea2bb9",
+    "wall_s": 55.37,
+    "status": 200,
+    "initial_region": "clothing",
+    "fallback": false,
+    "output_size": [
+      576,
+      768
+    ],
+    "result_sha256": "5636d9352925189c9c4164e4af8af5336cdb57abd927526435063bb19caf4812",
+    "region": "clothing",
+    "revision": "d144dcb1f70540f581ed99930ee61aac21b5c6d6",
+    "steps": 3,
+    "pixels": 331776,
+    "mlx_peak_gb": 8.3,
+    "service_s": 55.32,
+    "queue_s": 0.0,
+    "sample_s": 52.54,
+    "prepare_s": 1.45,
+    "finish_s": 1.34
+  },
+  "attempts": 20,
+  "completed": 20,
+  "status_counts": {
+    "200": 20
+  },
+  "case_counts": {
+    "blue-product": 5,
+    "polo-worn": 5,
+    "zipneck-worn": 5,
+    "blue-dim-camera": 5
+  },
+  "wall": {
+    "n": 20,
+    "median_s": 110.435,
+    "p95_s": 142.287,
+    "min_s": 77.617,
+    "max_s": 150.121
+  },
+  "service": {
+    "n": 20,
+    "median_s": 110.375,
+    "p95_s": 142.1,
+    "min_s": 77.57,
+    "max_s": 150.06
+  },
+  "fallbacks": 0,
+  "crop_attempts": 20,
+  "unobserved_initial_region": 0
+}

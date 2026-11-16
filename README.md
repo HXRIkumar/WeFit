@@ -1,6 +1,22 @@
 # WeFit
 
-A local virtual try-on renderer for Apple Silicon. Give it a person photo and a garment photo. It locates the clothing, runs a frozen 9B image editor on the relevant part of the picture and returns a complete photograph. The research code here runs on its own. The complete account-based studio is maintained separately.
+WeFit is a local virtual try-on research project. Give the Apple Silicon renderer a person photo and a garment photo. It locates the clothing, edits that area with FLUX.2 Klein 9B and returns a photograph. The research code runs independently of the account-based studio.
+
+## V2 · Inside the model
+
+We trained a **16,896-parameter LoRA adapter** on the final image layer while keeping the original 9B transformer frozen. Fourteen Fashionpedia photographs supplied training targets, five selected the adapter and five tested it. The interactive inspector lets you pick a shirt patch, see its numerical response, follow a connection into the output and read how training changed it. It also shows measurements at **all 32 transformer blocks** and the results of bypassing blocks or changing their weight precision.
+
+The learned correction reduced held-out error in the model’s internal image representation. After decoding, the garment was closer to the known photograph in **one of five** photos. Mean garment pixel error rose from **26.75 to 27.69** on a 0–255 scale. The ordinary preset keeps the frozen model. Five validation photos selected full correction strength. That choice also increased error on the held-out photographs. [Per-image comparison](docs/study-v2/evidence/held-out.csv)
+
+[Download the interactive inspector](https://github.com/HXRIkumar/WeFit/releases/download/v2.0.0/inside-klein.html) and open it in your browser. It works offline on Mac or Windows. [Read the V2 findings](docs/study-v2/README.md) · [PDF report](docs/study-v2/WeFit-V2-study.pdf) · [Training diagram and Mermaid source](docs/study-v2/diagrams) · [Reproduce the experiments](docs/study-v2/REPRODUCE.md) · [Trained adapters](docs/study-v2/adapters)
+
+For repeated experiments on the **same** person, garment and seed, we saved the final layer’s input once. At 256 × 320 pixels, changing the adapter then took a median **0.650 s** to decode, against **42.614 s** for a full render. Fifteen of 15 independently rendered comparisons matched pixel-for-pixel. A fresh person or product needs the full editor. [Timing and equivalence checks](docs/study-v2/evidence/replay.json)
+
+On the M4 Air, a fresh worker answered after **6.80 s**. The first complete photo took **55.37 s**. Across **20 subsequent requests**, the median was **110.44 s**, the nearest-rank p95 was **142.29 s**, and all 20 crops completed in one pass. Each request generated a new result. Together these four cases cover one person, two camera captures and three products. [Raw request timings](docs/study-v2/evidence/requests.jsonl)
+
+The running Q3/Q4 experiment saved **163.6 MB** and raised garment RGB error from **27.69 to 28.01** against the matched Q4 adapter. For storage, lossless compression of the original model saved **503.5 MB (9.5%)**. All ten original files matched after decompression. Running that archive requires extracting it first. [Precision experiment](docs/study-v2/evidence/mixed-checkpoint.json) · [File-by-file archive verification](docs/study-v2/evidence/archive.json)
+
+## V1 · From the handoff to the local photo editor
 
 **Measured on the M4 MacBook Air:** a 1024-pixel development run took **251.87 s** to render; the optimized blue-shirt request took **56.36 s** on the local client. These are different configurations and clocks. The original handoff has no logged AI runtime. The controlled three-pair experiment below isolates region rendering.
 
@@ -41,7 +57,7 @@ The [system sequence](docs/portfolio/diagrams/studio.svg) shows how a request mo
 - **Render a clothing region.** The native image transformer and VAE run at a 768-pixel working long side. Standard tops use three steps. Detailed tops and trousers use four. An edge or hand-position failure can trigger one full-frame retry.
 - **Return the photograph.** The compositor protects the original head, room and unaffected garments where the masks permit. Unseen skin, tiny lettering and fabric drape remain uncertain. This editor produces still photos. Physical-size accuracy requires wearing trials.
 
-Black Forest Labs trained FLUX.2 Klein. The MFLUX community supplied the Q4 checkpoint. WeFit adds the inference pipeline and evaluation. All transformer blocks are retained. The weights and adapters received no training updates. [Model card](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-kv) · [Implementation and licensing credits](ATTRIBUTION.md)
+Black Forest Labs trained FLUX.2 Klein. The MFLUX community supplied the Q4 checkpoint. V1 uses those weights throughout. V2 adds the separately trained output adapter and experiments with lower precision and skipped blocks. The ordinary studio preset uses V1. [Model card](https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-kv) · [Implementation and licensing credits](ATTRIBUTION.md)
 
 ## Run a local try-on
 
@@ -75,6 +91,7 @@ Open `artifacts/try-on.png` to see the result. Use `garment_photo_type=model` fo
 .venv/bin/python -m tools.compare_regions examples/person.png examples/garment.png \
   --pairs 3 --output artifacts/my-region-runs.csv
 python3 -m tools.verify_evidence
+python3 -m tools.verify_study
 ```
 
 The included sample is shareable and redacted. Independent runs with it use different input bytes from the private measured pair. To repeat the archive overlay with the original ZIP available locally, see [the evidence notes](docs/portfolio/evidence/README.md). Linux CI runs the CPU contracts and evidence checks. The MLX-specific tests run on Apple Silicon.

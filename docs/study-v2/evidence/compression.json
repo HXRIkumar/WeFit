@@ -1,0 +1,39 @@
+{
+  "learned_rank": 4,
+  "learned_bytes": 68834,
+  "learned_fp32_val_mse": 0.6893170297145843,
+  "compact_rank": 4,
+  "compact_bytes": 35042,
+  "validation_images": 5,
+  "selection": "Smallest FP16 rank within +0.1% mean and +0.5% worst image latent MSE of the full FP32 adapter on validation.",
+  "candidates": [
+    {
+      "rank": 1,
+      "float": "fp16",
+      "mean_mse": 0.7047755420207977,
+      "worst_relative_change": 0.02960861438743878,
+      "eligible": false
+    },
+    {
+      "rank": 2,
+      "float": "fp16",
+      "mean_mse": 0.694189453125,
+      "worst_relative_change": 0.01489562221733598,
+      "eligible": false
+    },
+    {
+      "rank": 3,
+      "float": "fp16",
+      "mean_mse": 0.6904753863811492,
+      "worst_relative_change": 0.0033751483356450063,
+      "eligible": false
+    },
+    {
+      "rank": 4,
+      "float": "fp16",
+      "mean_mse": 0.6893168210983276,
+      "worst_relative_change": 1.298010487316148e-06,
+      "eligible": true
+    }
+  ]
+}

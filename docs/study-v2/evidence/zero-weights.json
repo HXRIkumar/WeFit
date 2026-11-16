@@ -1,0 +1,15 @@
+{
+  "head_connections": 524288,
+  "zero_weights": 60855,
+  "original_q4_bytes": 294912,
+  "zero_bitmap_bytes": 65536,
+  "nonzero_nibbles_bytes": 231717,
+  "scale_and_offset_bytes": 32768,
+  "bitmap_representation_bytes": 330021,
+  "deflate_dense_bytes": 241739,
+  "deflate_bitmap_bytes": 246987,
+  "deflate_byte_exact": true,
+  "decoded_values_exact": true,
+  "nonzero_codes_exact": true,
+  "scope": "Final Q4 output projection. The bitmap uses one presence bit per weight, four bits per retained code and original scales and offsets. DEFLATE level 9 separately compares archiving both layouts. Inference uses the dense kernel."
+}

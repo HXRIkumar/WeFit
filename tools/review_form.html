@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WeFit garment review</title>
+    <style>
+      :root {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        color: #152c3c;
+        background: #f2f5f7;
+        --ink: #152c3c;
+        --blue: #1a4f76;
+        --line: #c7d4db;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 1190px;
+        margin: 0 auto;
+        padding: 30px clamp(14px, 4vw, 54px) 60px;
+      }
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 14px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 4.2vw, 42px);
+        font-weight: 590;
+        letter-spacing: -0.045em;
+      }
+      header span,
+      figcaption,
+      legend {
+        font-weight: 650;
+      }
+      .brief {
+        max-width: 72ch;
+        line-height: 1.5;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: 1fr 2.2fr 2.2fr;
+        gap: clamp(6px, 1.5vw, 18px);
+        align-items: start;
+      }
+      .references {
+        display: grid;
+        gap: 10px;
+      }
+      figure {
+        margin: 0;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        background: #e0e5e7;
+      }
+      .result img {
+        max-height: 520px;
+      }
+      .references img {
+        max-height: 230px;
+      }
+      figcaption {
+        font-size: 13px;
+        padding: 7px 0 5px;
+      }
+      .result figcaption {
+        font-size: 16px;
+        color: var(--blue);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        margin: 12px 0;
+      }
+      td,
+      th {
+        vertical-align: middle;
+        padding: 9px 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      tbody th {
+        font-weight: 500;
+      }
+      table th:first-child {
+        width: 48%;
+      }
+      select,
+      button {
+        min-height: 42px;
+        color: var(--ink);
+        font: inherit;
+        background: #fff;
+        border: 1px solid #9bafb9;
+        border-radius: 4px;
+        padding: 6px 10px;
+      }
+      select {
+        width: 100%;
+        max-width: 210px;
+      }
+      button {
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: white;
+        font-weight: bold;
+      }
+      button:disabled {
+        opacity: 0.55;
+      }
+      fieldset {
+        border: 0;
+        padding: 0;
+        margin: 20px 0;
+      }
+      fieldset label {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px 8px 0;
+      }
+      footer {
+        display: flex;
+        gap: 12px;
+      }
+      button:focus-visible,
+      select:focus-visible,
+      input:focus-visible {
+        outline: 3px solid #d98419;
+        outline-offset: 2px;
+      }
+      #feedback {
+        color: #8b352b;
+      }
+      .done {
+        max-width: 600px;
+        margin: 60px 0;
+      }
+      h2 {
+        font-size: 24px;
+        letter-spacing: -0.025em;
+        margin-bottom: 4px;
+      }
+      @media (max-width: 650px) {
+        main {
+          padding-top: 18px;
+        }
+        .board {
+          grid-template-columns: 1fr 1fr;
+        }
+        .references {
+          grid-column: 1/-1;
+          grid-template-columns: 1fr 1fr;
+        }
+        .references figure {
+          display: flex;
+          flex-direction: column;
+        }
+        .references img {
+          height: 114px;
+        }
+        .result img {
+          max-height: 350px;
+        }
+        td,
+        th {
+          padding: 7px 3px;
+        }
+        select {
+          padding: 4px;
+          max-width: 125px;
+        }
+        header {
+          align-items: center;
+        }
+        header span {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>WeFit garment review</h1>
+        <span id="progress"></span>
+      </header>
+      <section id="task">
+        <p class="brief">
+          Compare both results with the person and the garment. Look at the
+          collar, how the sleeves meet the arms and any change to the pose or
+          room.
+        </p>
+        <div class="board">
+          <div class="references">
+            <figure>
+              <figcaption>Person</figcaption>
+              <img id="source" alt="Source photograph" />
+            </figure>
+            <figure>
+              <figcaption>Garment</figcaption>
+              <img id="product" alt="Garment reference" />
+            </figure>
+          </div>
+          <figure class="result">
+            <figcaption>Result A</figcaption>
+            <img id="A" alt="First result" />
+          </figure>
+          <figure class="result">
+            <figcaption>Result B</figcaption>
+            <img id="B" alt="Second result" />
+          </figure>
+        </div>
+        <form id="form">
+          <h2>Rate both results</h2>
+          <p class="brief">
+            Use 1 for a clear mismatch, 3 for a partial match and 5 for a close
+            match. Choose “Not visible” when the photo hides a feature.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Result A</th>
+                <th>Result B</th>
+              </tr>
+            </thead>
+            <tbody id="scores"></tbody>
+          </table>
+          <fieldset>
+            <legend>Which result would you choose?</legend>
+            <label
+              ><input required type="radio" name="preference" value="A" />
+              Result A</label
+            ><label
+              ><input type="radio" name="preference" value="B" /> Result
+              B</label
+            ><label
+              ><input type="radio" name="preference" value="tie" /> Tie</label
+            >
+          </fieldset>
+          <footer>
+            <button type="button" id="back">Previous</button
+            ><button class="primary" id="next">Save and continue</button>
+          </footer>
+        </form>
+      </section>
+      <section id="done" class="done" hidden>
+        <h2>Review complete</h2>
+        <p class="brief">
+          Download your ratings and return the JSON file to the person running
+          the study.
+        </p>
+        <button class="primary" id="download">Download ratings</button>
+        <button id="edit">Review my answers</button>
+      </section>
+    </main>
+    <script>
+      const packet = __PACKET_DATA__;
+      const fields = {
+        neckline: "Neck or collar alignment",
+        shoulders: "Shoulder placement",
+        sleeves: "Sleeve and cuff fit",
+        fabric: "Fabric, colour and markings",
+        anatomy: "Hands, arms and pose",
+        scene: "Background and lighting",
+      };
+      const storageKey = "wefit-review-" + packet.packet;
+      let saved = {},
+        index = 0;
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKey) || "null");
+        if (stored) {
+          saved = stored.ratings;
+          index = Math.min(stored.index, packet.cases.length);
+        }
+      } catch {}
+      const el = (id) => document.getElementById(id);
+      function store() {
+        try {
+          localStorage.setItem(
+            storageKey,
+            JSON.stringify({ ratings: saved, index }),
+          );
+        } catch {}
+      }
+      function draw() {
+        const finished = index === packet.cases.length;
+        el("task").hidden = finished;
+        el("done").hidden = !finished;
+        el("progress").textContent = finished
+          ? "Complete"
+          : "Pair " + (index + 1) + " of " + packet.cases.length;
+        if (finished) return;
+        const example = packet.cases[index],
+          value = saved[example.id] || {};
+        for (const [slot, url] of Object.entries(example.images))
+          el(slot).src = url;
+        const body = el("scores");
+        body.replaceChildren();
+        for (const [key, name] of Object.entries(fields)) {
+          const row = body.insertRow();
+          const th = document.createElement("th");
+          th.scope = "row";
+          th.textContent = name;
+          row.append(th);
+          for (const side of ["A", "B"]) {
+            const select = document.createElement("select");
+            select.name = side + "-" + key;
+            select.required = true;
+            select.setAttribute("aria-label", name + " for " + side);
+            for (const [v, text] of [
+              ["", "Select"],
+              ["1", "1"],
+              ["2", "2"],
+              ["3", "3"],
+              ["4", "4"],
+              ["5", "5"],
+              ["na", "Not visible"],
+            ]) {
+              select.add(new Option(text, v));
+            }
+            const old = value[side]?.[key];
+            select.value =
+              old === undefined ? "" : old === null ? "na" : String(old);
+            row.insertCell().append(select);
+          }
+        }
+        for (const radio of document.querySelectorAll("[name=preference]"))
+          radio.checked = radio.value === value.preference;
+        el("back").disabled = index === 0;
+        el("next").textContent =
+          index === packet.cases.length - 1
+            ? "Finish review"
+            : "Save and continue";
+      }
+      el("form").onsubmit = (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target),
+          rating = { preference: fd.get("preference") };
+        for (const side of ["A", "B"]) {
+          rating[side] = {};
+          for (const key of Object.keys(fields)) {
+            const v = fd.get(side + "-" + key);
+            rating[side][key] = v === "na" ? null : Number(v);
+          }
+        }
+        saved[packet.cases[index].id] = rating;
+        index++;
+        store();
+        draw();
+        window.scrollTo(0, 0);
+      };
+      el("back").onclick = () => {
+        index--;
+        store();
+        draw();
+        window.scrollTo(0, 0);
+      };
+      el("edit").onclick = () => {
+        index = 0;
+        store();
+        draw();
+      };
+      el("download").onclick = () => {
+        const blob = new Blob(
+          [JSON.stringify({ packet: packet.packet, ratings: saved }, null, 2)],
+          { type: "application/json" },
+        );
+        const link = document.createElement("a"),
+          u = URL.createObjectURL(blob);
+        link.href = u;
+        link.download = "wefit-ratings-" + packet.packet + ".json";
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(u), 1000);
+      };
+      draw();
+    </script>
+  </body>
+</html>

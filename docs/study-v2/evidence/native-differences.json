@@ -1,0 +1,26 @@
+[
+  {
+    "case": "blue-product",
+    "garment_rgb_change": 10.805695533752441,
+    "outside_rgb_change": 0.2525723874568939,
+    "pixel_exact_fraction": 0.6266637731481481
+  },
+  {
+    "case": "polo-worn",
+    "garment_rgb_change": 7.438196182250977,
+    "outside_rgb_change": 0.8032109141349792,
+    "pixel_exact_fraction": 0.5649753146701388
+  },
+  {
+    "case": "zipneck-worn",
+    "garment_rgb_change": 7.381200790405273,
+    "outside_rgb_change": 0.42136847972869873,
+    "pixel_exact_fraction": 0.5640778718171297
+  },
+  {
+    "case": "blue-dim-camera",
+    "garment_rgb_change": 8.828812599182129,
+    "outside_rgb_change": 0.5224180817604065,
+    "pixel_exact_fraction": 0.41165726273148145
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "transformer": {
+    "groups": {
+      "context_embedder": {
+        "logical_weights": 50331648,
+        "stored_tensor_bytes": 28311552,
+        "tensors": 3
+      },
+      "double_stream_modulation_img": {
+        "logical_weights": 100663296,
+        "stored_tensor_bytes": 56623104,
+        "tensors": 3
+      },
+      "double_stream_modulation_txt": {
+        "logical_weights": 100663296,
+        "stored_tensor_bytes": 56623104,
+        "tensors": 3
+      },
+      "single_stream_modulation": {
+        "logical_weights": 50331648,
+        "stored_tensor_bytes": 28311552,
+        "tensors": 3
+      },
+      "time_guidance_embed": {
+        "logical_weights": 17825792,
+        "stored_tensor_bytes": 10027008,
+        "tensors": 6
+      },
+      "transformer_blocks.0": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.1": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.2": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.3": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.4": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.5": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.6": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "transformer_blocks.7": {
+        "logical_weights": 436208128,
+        "stored_tensor_bytes": 245367808,
+        "tensors": 40
+      },
+      "x_embedder": {
+        "logical_weights": 524288,
+        "stored_tensor_bytes": 294912,
+        "tensors": 3
+      },
+      "single_transformer_blocks.0": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.1": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.10": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.11": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.12": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.13": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.14": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.15": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.16": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.2": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.3": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.4": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.5": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.6": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.7": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.8": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.9": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "norm_out": {
+        "logical_weights": 33554432,
+        "stored_tensor_bytes": 18874368,
+        "tensors": 3
+      },
+      "proj_out": {
+        "logical_weights": 524288,
+        "stored_tensor_bytes": 294912,
+        "tensors": 3
+      },
+      "single_transformer_blocks.17": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.18": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.19": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.20": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.21": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.22": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      },
+      "single_transformer_blocks.23": {
+        "logical_weights": 218104064,
+        "stored_tensor_bytes": 122683904,
+        "tensors": 8
+      }
+    },
+    "logical_weights": 9078581248,
+    "stored_tensor_bytes": 5106716672,
+    "tensors": 539
+  },
+  "vae": {
+    "groups": {
+      "bn": {
+        "logical_weights": 0,
+        "stored_tensor_bytes": 512,
+        "tensors": 2
+      },
+      "decoder": {
+        "logical_weights": 49619203,
+        "stored_tensor_bytes": 97731078,
+        "tensors": 146
+      },
+      "encoder": {
+        "logical_weights": 34421696,
+        "stored_tensor_bytes": 67336064,
+        "tensors": 114
+      },
+      "post_quant_conv": {
+        "logical_weights": 1056,
+        "stored_tensor_bytes": 2112,
+        "tensors": 2
+      },
+      "quant_conv": {
+        "logical_weights": 4160,
+        "stored_tensor_bytes": 8320,
+        "tensors": 2
+      }
+    },
+    "logical_weights": 84046115,
+    "stored_tensor_bytes": 165078086,
+    "tensors": 266
+  },
+  "definition": "Logical weight and bias entries in the pinned checkpoint. Affine quantization scales, offsets and running statistics count only toward stored bytes. Safetensors headers and index files are excluded from byte totals."
+}

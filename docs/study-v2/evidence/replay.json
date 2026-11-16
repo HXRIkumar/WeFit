@@ -1,0 +1,31 @@
+{
+  "canvas": [
+    256,
+    320
+  ],
+  "validation_images": 5,
+  "test_images": 5,
+  "validation_strengths": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "selected_strength": 1.0,
+  "decoder_ready_s": 0.0232,
+  "matched_full_median_s": 42.614,
+  "matched_compact_replay_median_s": 0.6497,
+  "exact_heldout_controls": 15,
+  "compared_heldout_controls": 15,
+  "state_bytes_per_image": [
+    2786033
+  ],
+  "test_garment_error": {
+    "frozen": 26.74914264678955,
+    "trained": 27.688154029846192,
+    "compact": 27.68819351196289,
+    "validation-choice": 27.68819351196289
+  },
+  "scope": "One full render stores the final projection input, original prediction, previous latent and schedule. The replay timer includes reading the state, correction and full native decoding with a resident VAE. New photos, garments, seeds and earlier-layer changes require the full transformer."
+}

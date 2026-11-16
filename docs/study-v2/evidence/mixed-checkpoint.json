@@ -1,0 +1,64 @@
+{
+  "base_revision": "d144dcb1f70540f581ed99930ee61aac21b5c6d6",
+  "profile": "wefit-q3-six-blocks",
+  "blocks": [
+    8,
+    7,
+    9,
+    6,
+    0,
+    1
+  ],
+  "projections_requantized": 12,
+  "source_quantization": 4,
+  "target_quantization": 3,
+  "stored_bytes_before": 5271889295,
+  "stored_bytes_after": 5108311431,
+  "storage_saving_bytes": 163577864,
+  "projection_relative_rms_weight_error": {
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj": 0.22101848769621002,
+    "single_transformer_blocks.8.attn.to_out": 0.2170512265175518,
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj": 0.2208080941451996,
+    "single_transformer_blocks.7.attn.to_out": 0.2175771528547601,
+    "single_transformer_blocks.9.attn.to_qkv_mlp_proj": 0.22129831601287606,
+    "single_transformer_blocks.9.attn.to_out": 0.21743654322016465,
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj": 0.222106123650904,
+    "single_transformer_blocks.6.attn.to_out": 0.21735890642666036,
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj": 0.2221783513209023,
+    "single_transformer_blocks.0.attn.to_out": 0.21670450985750628,
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj": 0.22169634337712368,
+    "single_transformer_blocks.1.attn.to_out": 0.21808450840897567
+  },
+  "unit": "Physical file length of all transformer and VAE safetensors shards. Shared files count at their full logical length.",
+  "source_sha256": {
+    "transformer/0.safetensors": "d2d305be17d11b98f2353a4318495904a3c74259e9a1905b2c93fb5f88232f9e",
+    "transformer/1.safetensors": "68804583c986f32493718e9bae3f8239db98a0526362fa9262a6342a6a59994f",
+    "transformer/2.safetensors": "20e903436caed8d9e048117ae28aef4425bcd367c7dc280618376073782cb337",
+    "vae/0.safetensors": "ab26bf1613e6b51a955bfaf05409e2a16138a072ba0bb7f4fc768236fb4a990b"
+  },
+  "candidate_sha256": {
+    "transformer/0.safetensors": "d2d305be17d11b98f2353a4318495904a3c74259e9a1905b2c93fb5f88232f9e",
+    "transformer/1.safetensors": "dfefb8e9c3f3bb518db52ccd03a10c2011b19c2eb937481244fb381e087ece67",
+    "transformer/2.safetensors": "20e903436caed8d9e048117ae28aef4425bcd367c7dc280618376073782cb337",
+    "vae/0.safetensors": "ab26bf1613e6b51a955bfaf05409e2a16138a072ba0bb7f4fc768236fb4a990b"
+  },
+  "loaded_precision_verified": true,
+  "held_out_images": 5,
+  "canvas": [
+    256,
+    320
+  ],
+  "methods": {
+    "q4": {
+      "median_s": 42.614,
+      "garment_mae": 27.68819351196289,
+      "outside_mae": 6.430636405944824
+    },
+    "mixed": {
+      "median_s": 40.895,
+      "garment_mae": 28.010240936279295,
+      "outside_mae": 6.609184741973877
+    }
+  },
+  "scope": "Identical compact adapter on both backbones. Mixed model stores Q3 in two projections of six selected single blocks; all other tensors retain their original precision. Independent one-image warm-up per group."
+}

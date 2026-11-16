@@ -1,0 +1,6 @@
+{
+  "definition": "Launcher process start to HTTP readiness, downloaded models present, OS disk cache uncontrolled",
+  "utc": "2026-11-16T11:09:44.123575+00:00",
+  "worker_ready_s": 6.799,
+  "studio_ready_s": 7.331
+}

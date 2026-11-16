@@ -1,0 +1,15 @@
+flowchart TB
+  photos["24 labelled clothing photos<br/>Separate photos for training, validation and testing"]:::input
+  photos --> train["14 training photos<br/>Grey out the shirt and supply its cutout"]:::input
+  train --> frozen["Frozen Klein and VAE<br/>Save the last-step features and the known target"]:::frozen
+  frozen --> learn["Fit only two matrices A and B<br/>420 updates to 16,896 numbers"]:::learn
+  learn --> choose["5 validation photos<br/>Choose an epoch, then compact the adapter"]:::check
+  photos -.-> choose
+  choose --> test["5 unseen photos<br/>Decode both pictures and score garment pixels"]:::check
+  frozen --> probe["Measure all 32 blocks on 3 training photos<br/>Rank 4,096 final inputs on all 14"]:::frozen
+  probe --> change["Skip candidate blocks or lower their precision<br/>Run the same held-out photos"]:::check
+  test --> camera["4 real camera and shop-product cases<br/>Render both versions for blind review"]:::input
+  classDef input fill:#edf3f6,stroke:#5e8190,color:#1d3944,stroke-width:1.5px;
+  classDef frozen fill:#e2efeb,stroke:#4d8075,color:#153a32,stroke-width:1.5px;
+  classDef learn fill:#154c4f,stroke:#154c4f,color:#ffffff,stroke-width:2px;
+  classDef check fill:#f6efdf,stroke:#967a48,color:#47391f,stroke-width:1.5px;

@@ -1,0 +1,51 @@
+{
+  "method": "ZIP64 with DEFLATE level 1. Restore the model before inference.",
+  "source_bytes": 5283374510,
+  "archive_bytes": 4779910364,
+  "saved_bytes": 503464146,
+  "pack_wall_s": 137.005,
+  "verify_wall_s": 15.968,
+  "all_files_hash_match": true,
+  "files": {
+    "README.md": {
+      "bytes": 3150,
+      "sha256": "dd9d9f5ffeceec18c8d273101e5ae41bfd65c03fdaa1301fdf2d93c622a0700f"
+    },
+    "tokenizer/chat_template.jinja": {
+      "bytes": 4168,
+      "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+    },
+    "tokenizer/tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    "tokenizer/tokenizer_config.json": {
+      "bytes": 376,
+      "sha256": "779410a34a98fb2c6c925a1be6f24d632f1723473161b037f6676eb6c04886c6"
+    },
+    "transformer/0.safetensors": {
+      "bytes": 2143173694,
+      "sha256": "d2d305be17d11b98f2353a4318495904a3c74259e9a1905b2c93fb5f88232f9e"
+    },
+    "transformer/1.safetensors": {
+      "bytes": 2085643520,
+      "sha256": "68804583c986f32493718e9bae3f8239db98a0526362fa9262a6342a6a59994f"
+    },
+    "transformer/2.safetensors": {
+      "bytes": 877964193,
+      "sha256": "20e903436caed8d9e048117ae28aef4425bcd367c7dc280618376073782cb337"
+    },
+    "transformer/model.safetensors.index.json": {
+      "bytes": 37324,
+      "sha256": "cfb697bc52e2a3b2e00c1536e429c00b5681309d87bd1c9d6a66d89d71aa67a3"
+    },
+    "vae/0.safetensors": {
+      "bytes": 165107888,
+      "sha256": "ab26bf1613e6b51a955bfaf05409e2a16138a072ba0bb7f4fc768236fb4a990b"
+    },
+    "vae/model.safetensors.index.json": {
+      "bytes": 17547,
+      "sha256": "2fa788f469d20113ba7f099285f0f50396dbd53ae0e5d01c95fcf0cd470c66db"
+    }
+  }
+}

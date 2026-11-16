@@ -1,0 +1,252 @@
+{
+  "seed": "wefit-output-lora-01",
+  "source": "Fashionpedia validation annotations / val_test2020.zip",
+  "canvas": [
+    256,
+    320
+  ],
+  "annotation_sha256": "f831f415edad12d52acde8b138fe7ebd1592b57bf0dcd6a3b63ba8cabd208223",
+  "split_unit": "image",
+  "records": [
+    {
+      "id": 18328,
+      "split": "train",
+      "annotation_id": 2729,
+      "category": "shirt, blouse",
+      "file_name": "0301f50a3cd73f13cd9e1125d8ef38bd.jpg",
+      "sha256": "ed0d6d576b9fe372ce25560472c8dd9b966dc53de380e4c7984bac53029e61e9",
+      "original_url": "http://farm8.staticflickr.com/7073/7167281317_e9e7ef0ddb_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 10994,
+      "split": "train",
+      "annotation_id": 7118,
+      "category": "shirt, blouse",
+      "file_name": "8248793dfb50ff3c8209cd0e44ddf9bf.jpg",
+      "sha256": "17f57c98fe599191d0ba4fcee466ace14054a7cee53cf39a10807c2456aedbd4",
+      "original_url": "http://farm4.staticflickr.com/3232/2898696433_2decca82ca_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 10471,
+      "split": "train",
+      "annotation_id": 6473,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "9c09e13e8d3b85d10cbdf08277af395e.jpg",
+      "sha256": "24b00de96ed3779b642726e9001bd54a507057f19ec1b0aa15eae86f3cb66c0e",
+      "original_url": "http://farm4.staticflickr.com/3520/3830819860_0da5a260ab_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 15687,
+      "split": "train",
+      "annotation_id": 529,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "466e69961de78100fddae84c64fbf542.jpg",
+      "sha256": "a652ebd38dd031433d5fdd14aedbf3d907c9526fca8620517d25e9c43d873ae5",
+      "original_url": "http://farm9.staticflickr.com/8326/8080171234_55b726b684_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 13339,
+      "split": "train",
+      "annotation_id": 8964,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "9eb8652e63ac33c79a9277fe0e115440.jpg",
+      "sha256": "e6c30030bf868edd7217fab716718f7f35fb986b63756c50a9479eb44078b04a",
+      "original_url": "http://farm4.staticflickr.com/3820/13251521873_6e68330a39_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 15785,
+      "split": "train",
+      "annotation_id": 650,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "08ce85240ea476099fa8e4528b4b8e23.jpg",
+      "sha256": "7ba2b1d40c57a5d305d33e7f84f5d2a7bea70c4b9eeff240e7906c5b86957619",
+      "original_url": "http://farm8.staticflickr.com/7302/13374805555_a4c62eb05f_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 17312,
+      "split": "train",
+      "annotation_id": 1909,
+      "category": "cardigan",
+      "file_name": "563f37df673fa80cfc369fbcf4a9869a.jpg",
+      "sha256": "ec20cecfdeda9cd0ef20dfdb1dfd49cbccd379232410c89cf6342d3e08ab3e5f",
+      "original_url": "http://farm6.staticflickr.com/5098/5475545985_0daf3ee7e0_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 11803,
+      "split": "train",
+      "annotation_id": 7755,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "c9946804239bdb74aa23c4a56445b9a8.jpg",
+      "sha256": "849305e139016320260c1c7be3eae09cf8a1a55474c7cf857bbdbe457776fd7e",
+      "original_url": "http://farm8.staticflickr.com/7654/16864625326_7844c757f6_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 16489,
+      "split": "train",
+      "annotation_id": 1174,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "3e57b446b927f69e56d46f3e5db68b37.jpg",
+      "sha256": "09c415f2786e290a31d752b055d37219b930134c3fc65eef63bb1f0cdfec6d64",
+      "original_url": "http://farm6.staticflickr.com/5794/30169270153_0046af70bb_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 9676,
+      "split": "train",
+      "annotation_id": 5938,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "c7ab3258faa14bd182e8cb18d225b6f7.jpg",
+      "sha256": "513e458dab065cd85b2b365150ae87d61bf7d03a33ab5bce328379513ac56769",
+      "original_url": "https://farm9.staticflickr.com/8480/8225520164_87fe5ec882_o.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 17091,
+      "split": "train",
+      "annotation_id": 3044,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "b66643e09504500db84e3d75535a8273.jpg",
+      "sha256": "d2fb31fd00a8d4a6b5a85a3d553351afb9193465796effcfaf0d3e238a8211e6",
+      "original_url": "http://farm3.staticflickr.com/2078/1552298423_1854aa8011_m.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 9914,
+      "split": "train",
+      "annotation_id": 6168,
+      "category": "shirt, blouse",
+      "file_name": "46c1433283e5cfba916f741bc681b99b.jpg",
+      "sha256": "9c1177c47cfd751313c6a2e3ce3ede9e3e353637d6e63a0ec7ee39a75350e6d1",
+      "original_url": "http://farm3.staticflickr.com/2347/2507900768_fc326bb98e_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 10727,
+      "split": "train",
+      "annotation_id": 6803,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "cdd27e07ef7ddf8d413bb13936241ac4.jpg",
+      "sha256": "b0ee1c0db70f0865503a3b689d1f6579af6143ed35517839d2fe30e729a7e107",
+      "original_url": "http://farm2.staticflickr.com/1184/944645874_118ed8dfed_m.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 8980,
+      "split": "train",
+      "annotation_id": 5301,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "a3068422b4e9c7f37d6cf45f44d1d8eb.jpg",
+      "sha256": "23d0e1228a26a8113073e2fb15d0cc17b8c269c965e37ee445664d0158a966f4",
+      "original_url": "http://farm5.staticflickr.com/4788/40758275411_ffc5b64bca_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 12524,
+      "split": "val",
+      "annotation_id": 8348,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "db26dd4ab74b3f12041cc72ff6acb60d.jpg",
+      "sha256": "cc0294fa86adb44135bf291d5cee73dd9c45c38b29f47277b204daaee6aa901a",
+      "original_url": "http://farm6.staticflickr.com/5714/30713183021_8d9e270bbe_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 12007,
+      "split": "val",
+      "annotation_id": 7889,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "c042811268f9d093db4b97a63d2205b2.jpg",
+      "sha256": "717fecf04c3f429401978f917bd1db3c024c98fdd62903112aef8bf7669d4839",
+      "original_url": "http://farm3.staticflickr.com/2565/5748824181_11cdc7c632_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 18821,
+      "split": "val",
+      "annotation_id": 4976,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "50ebf72d1294ac64c8ff95ba81d05be7.jpg",
+      "sha256": "583c95549c1c609ca3ad1202c331bf137642973f11caccd7e2c137743978b2c6",
+      "original_url": "http://farm2.staticflickr.com/1514/24192061031_3aa45f92f2_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 10525,
+      "split": "val",
+      "annotation_id": 8967,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "88ed99e20253c0c56a6d70c8664d32ed.jpg",
+      "sha256": "5b3d46ef1a69348c55709bcf145fcd86726df8f4a437af38c221ac9441ee3996",
+      "original_url": "https://farm9.staticflickr.com/8286/7563090068_a8243a6981_o.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 15707,
+      "split": "val",
+      "annotation_id": 579,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "4aa6626a5183e3072b74ee07f75e07b6.jpg",
+      "sha256": "adc5d330cedf0111e868d08b6c81523057498f8b80b7348a5d76edd503b0eca5",
+      "original_url": "http://farm6.staticflickr.com/5140/5461896264_07cf9c115e_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 11446,
+      "split": "test",
+      "annotation_id": 7507,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "3b0e3da1465e802b7855e4c532638e7e.jpg",
+      "sha256": "e6351cbafb1a9de9aa79b017539df359cd5469d17bd40d4bfafb4fb947a1036a",
+      "original_url": "https://farm9.staticflickr.com/8521/8513580063_977f82e72a_o.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 20275,
+      "split": "test",
+      "annotation_id": 4817,
+      "category": "shirt, blouse",
+      "file_name": "ef9f506c8d4345edbb63f7fb54bb2cf5.jpg",
+      "sha256": "50ee7f7bf604e80f60b17551ceebff89eebe81f9b1331f2f208f66ce28207e7c",
+      "original_url": "http://farm4.staticflickr.com/3579/3412650746_348210b5b2_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 13049,
+      "split": "test",
+      "annotation_id": 8765,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "af8be1edbef6e48a88325ebf63cb48f1.jpg",
+      "sha256": "c12ef9df87e0413fd6d9f62da262f7da7fa666d675480c677e73a83fa7bcd4e3",
+      "original_url": "http://farm9.staticflickr.com/8502/8297310282_152277de4c_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 15840,
+      "split": "test",
+      "annotation_id": 671,
+      "category": "shirt, blouse",
+      "file_name": "eb920929bad2610918b0ca9e8236d058.jpg",
+      "sha256": "aa02408f137f9f23becad04b88e2b8b844dfabd3e76f1d7ff2329c893a574863",
+      "original_url": "http://farm8.staticflickr.com/7008/6736931023_3a3958d101_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    },
+    {
+      "id": 13283,
+      "split": "test",
+      "annotation_id": 8909,
+      "category": "top, t-shirt, sweatshirt",
+      "file_name": "52a6dcf5c19a6f0f6033ebc8dd9f3078.jpg",
+      "sha256": "70d1bb36204282146bdd34c00b2c7ae21e5b8fcc10f5ec1bd30f4cbf58685fec",
+      "original_url": "http://farm9.staticflickr.com/8177/8048898293_6fd07db0bb_n.jpg",
+      "license": "https://creativecommons.org/licenses/by/2.0/"
+    }
+  ]
+}

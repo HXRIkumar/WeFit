@@ -1,0 +1,24 @@
+{
+  "n": 5,
+  "canvas": [
+    256,
+    320
+  ],
+  "per_image_means": {
+    "latent_mse_base": 0.6980278730392456,
+    "latent_mse_adapter": 0.6789463043212891,
+    "garment_mae_base": 26.74914264678955,
+    "garment_mae_adapter": 27.688154029846192,
+    "outside_mae_base": 6.058213710784912,
+    "outside_mae_adapter": 6.4296056747436525,
+    "outside_mae_change": 2.177391839027405,
+    "garment_mae_compact": 27.68819351196289,
+    "outside_mae_compact": 6.430636405944824,
+    "compact_vs_trained_mae": 0.40278727412223814,
+    "compact_exact_pixel_fraction": 0.3927392578125
+  },
+  "garment_rgb_wins": 1,
+  "zero_adapter_pixel_identical": true,
+  "unchanged_base_checkpoint": true,
+  "scope": "Same-photo garment reconstruction on held-out images. No physical fit or cross-outfit accuracy measured."
+}
