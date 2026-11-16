@@ -29,3 +29,5 @@ The source package includes instruction embeddings, manifest, this notice and
 the full model license. It excludes renderer checkpoints and private photos.
 The license file is the full license linked by the original model card:
 https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-kv-fp8/blob/main/LICENSE
+
+The description above covers the ordinary editor. WeFit V2 also supplies a separately fitted output adapter. WeFit V3 offers optional supervised rank-eight structural students, timestep schedules, physical Q3 conversion and lossless archive loading. The original weights are obtained from the pinned upstream source. Newly fitted student coefficients carry this same non-commercial model license. See docs/study-v3 for the reproducible evaluations and stored model sizes.

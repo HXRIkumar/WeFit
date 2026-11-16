@@ -1,0 +1,8 @@
+{
+  "method": "q3-all-single",
+  "source": "pinned Q4",
+  "change": "Requantize the two dense projections in all 24 single-stream blocks to three bits. Keep every original block, the eight dual-stream blocks, the VAE and standard three steps.",
+  "selection": "Fixed secondary experiment, declared after initial validation images and before any V3 test image was scored. No tuning on the held-out set.",
+  "test": "Use the same three validation and five untouched test photographs, with real blue-product and polo-worn studio references. Compare with the existing frozen render at the same seed, and include independent freshly loaded timing.",
+  "comparison": "Garment RGB MAE against the known target, garment SSIM and within-8 fraction relative to frozen. Warm one training photo per process, then time validation, test and studio inputs."
+}

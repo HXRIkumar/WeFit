@@ -1,8 +1,8 @@
 """MFLUX's native KV renderer with exact precomputed fixed instructions.
 
-This adapter uses the upstream transformer/VAE/sampler unchanged. It omits the
-large text encoder at runtime; the two garment-independent instructions were
-encoded using the pinned encoder by tools.prepare_klein_prompts.
+The default Q4 profile uses the upstream transformer, decoder and sampler.
+Optional depth checkpoints substitute learned residual students. The pinned
+text encoder prepared both fixed instructions offline.
 """
 import hashlib
 import importlib.metadata
@@ -58,11 +58,25 @@ class CachedInstructionKlein(Flux2KleinEdit):
         if precision_name not in ("native", "float16"):
             raise ValueError("KLEIN_COMPUTE_PRECISION must be native or float16")
         self.compute_precision=ComputePrecision(None if precision_name == "native" else mx.float16)
-        self.vae=Flux2VAE();self.vae.decode_mode=VAEBlockDecoder.LOW_MEMORY
-        self.transformer=Flux2Transformer(**self.model_config.transformer_overrides)
+        if os.getenv("WEFIT_KLEIN_REFERENCE_CACHE") == "1":
+            from .klein_reference import ReferenceCachingVAE
+            self.vae = ReferenceCachingVAE()
+        else:
+            self.vae = Flux2VAE()
+        self.vae.decode_mode = VAEBlockDecoder.LOW_MEMORY
+        from .klein_depth import read_depth_manifest, restore_positions
+        depth = read_depth_manifest(weights_path)
+        config = dict(self.model_config.transformer_overrides)
+        if depth:
+            config["num_single_layers"] = 24 - len(depth["removed"])
+        self.transformer=Flux2Transformer(**config)
         self.text_encoder=None;self.tokenizers={};self.lora_paths=None;self.lora_scales=None
-        loaded=WeightLoader.load(weight_definition=Flux2KleinNoTextEncoderWeightDefinition,
-                                 model_path=str(weights_path.resolve()))
+        if weights_path.is_file() and weights_path.suffix.lower() == ".zip":
+            from .klein_archive import load as load_archived_weights
+            loaded = load_archived_weights(weights_path)
+        else:
+            loaded = WeightLoader.load(weight_definition=Flux2KleinNoTextEncoderWeightDefinition,
+                                       model_path=str(weights_path.resolve()))
         self.bits=WeightApplier.apply_and_quantize(weights=loaded,quantize_arg=4,
             weight_definition=Flux2KleinNoTextEncoderWeightDefinition,models={'vae':self.vae,'transformer':self.transformer})
         if self.compute_precision.dtype is not None:
@@ -70,6 +84,11 @@ class CachedInstructionKlein(Flux2KleinEdit):
         if os.getenv("KLEIN_COMPILE_BLOCKS", "1") == "1":
             from .klein_compile import compile_cached_blocks
             compile_cached_blocks(self.transformer)
+        if depth:
+            with np.load(weights_path / "students.npz", allow_pickle=False) as students:
+                self.transformer.single_transformer_blocks = restore_positions(
+                    self.transformer.single_transformer_blocks, students, depth["removed"]
+                )
         # Native row-strip decoding retains full-image normalization. No tiled
         # decoder or small text-encoder approximation is introduced here.
         self.callbacks.register(MemorySaver(self,keep_transformer=True,cache_limit_bytes=None))

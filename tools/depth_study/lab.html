@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>WeFit · Depth and detail</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f6f5ef;
+        --ink: #173b36;
+        --muted: #4f625b;
+        --line: #c8ccc0;
+        --accent: #ac542b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.55 Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      main,
+      header {
+        max-width: 1180px;
+        margin: auto;
+        padding: 0 4vw;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+        min-height: 64px;
+      }
+      header b {
+        font-size: 21px;
+        letter-spacing: -0.055em;
+      }
+      header span,
+      small {
+        color: var(--muted);
+      }
+      header a {
+        color: var(--ink);
+        font-size: 14px;
+      }
+      .hero {
+        padding: 44px 0 17px;
+        border-bottom: 1px solid var(--line);
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0 0 0.55em;
+      }
+      h1 {
+        font:
+          500 clamp(38px, 6vw, 76px) / 1.03 Georgia,
+          serif;
+        letter-spacing: -0.045em;
+      }
+      h2 {
+        font:
+          500 clamp(26px, 3.5vw, 37px) / 1.14 Georgia,
+          serif;
+        letter-spacing: -0.02em;
+      }
+      h3 {
+        font-size: 17px;
+      }
+      p {
+        max-width: 76ch;
+      }
+      .hero p {
+        font-size: clamp(15px, 1.65vw, 19px);
+        color: var(--muted);
+      }
+      section {
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      label {
+        font-size: 14px;
+        font-weight: 620;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      select {
+        font: inherit;
+        min-height: 41px;
+        max-width: 100%;
+        padding: 7px 30px 7px 10px;
+        border: 1px solid #8d9e92;
+        border-radius: 4px;
+        color: var(--ink);
+        background: #fff;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 11px 18px;
+        align-items: end;
+        margin: 17px 0;
+      }
+      .numbers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 20px 0;
+        border-block: 1px solid var(--line);
+      }
+      .number {
+        padding: 14px 10px 13px 0;
+      }
+      .number b {
+        font:
+          500 clamp(23px, 3.2vw, 40px) / 1.2 Georgia,
+          serif;
+        display: block;
+      }
+      .number span {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .scroller {
+        max-width: 100%;
+        overflow-x: auto;
+        padding-bottom: 5px;
+      }
+      .heat {
+        min-width: 650px;
+        display: grid;
+        gap: 4px;
+      }
+      .heat span {
+        font:
+          12px/1.2 ui-monospace,
+          monospace;
+        text-align: center;
+        align-self: center;
+      }
+      .heat .step {
+        text-align: left;
+        white-space: nowrap;
+      }
+      .cell {
+        height: 35px;
+        border: 1px solid #64776b;
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+        color: #12261c;
+        font:
+          700 15px/1 ui-monospace,
+          monospace;
+      }
+      .cell.current {
+        outline: 3px solid #9c461f;
+        outline-offset: 1px;
+        z-index: 1;
+      }
+      .legend {
+        font-size: 13px;
+        margin: 8px 0;
+        color: var(--muted);
+      }
+      .readout {
+        padding: 13px 16px;
+        background: #e9ede3;
+        border-left: 3px solid #728c75;
+        margin: 14px 0 0;
+        max-width: none;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        max-width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 14px;
+        font-variant-numeric: tabular-nums;
+      }
+      td,
+      th {
+        text-align: right;
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      th {
+        font-weight: 600;
+        color: var(--muted);
+      }
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+      figure {
+        margin: 18px 0 0;
+      }
+      figure img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+      }
+      figcaption,
+      details p,
+      .foot {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      details {
+        border-top: 1px solid var(--line);
+        padding: 12px 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 650;
+      }
+      details p {
+        margin-top: 8px;
+      }
+      .foot {
+        padding: 15px 0 35px;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      select:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #9c461f;
+        outline-offset: 2px;
+      }
+      @media (max-width: 650px) {
+        main,
+        header {
+          padding-inline: 18px;
+        }
+        .hero {
+          padding-top: 30px;
+        }
+        .numbers {
+          grid-template-columns: 1fr 1fr;
+        }
+        .heat {
+          min-width: 595px;
+        }
+        .heat .cell {
+          height: 35px;
+        }
+        section {
+          padding: 22px 0;
+        }
+        .controls label {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <b>WeFit</b
+      ><a
+        id="oldLab"
+        href="https://github.com/HXRIkumar/WeFit/releases/download/v2.0.0/inside-klein.html"
+        >Activation inspector ↗</a
+      >
+    </header>
+    <main>
+      <div class="hero">
+        <h1>Depth and detail</h1>
+        <p>
+          Which parts of a nine-billion-parameter image editor can you remove
+          before the shirt changes? Explore the runs recorded on an M4 MacBook
+          Air.
+        </p>
+      </div>
+      <section>
+        <h2>Compare the rendered garments</h2>
+        <div class="controls">
+          <label
+            >Photo set<select id="split">
+              <option value="test">Five unseen test photos</option>
+              <option value="validation">Three validation photos</option>
+            </select></label
+          >
+          <label>Model or schedule<select id="method"></select></label>
+        </div>
+        <p id="methodText"></p>
+        <div class="numbers" aria-live="polite">
+          <div class="number">
+            <b id="size"></b><span id="sizeLabel">Weight files</span>
+          </div>
+          <div class="number">
+            <b id="seconds"></b><span>Median render at 256 × 320</span>
+          </div>
+          <div class="number">
+            <b id="ssim"></b><span>Garment structural similarity</span>
+          </div>
+          <div class="number">
+            <b id="pixels"></b><span>Garment pixels within 8 levels</span>
+          </div>
+        </div>
+        <p class="legend">
+          A structural similarity score of 1 means identical local structure.
+          The pixel fraction counts garment locations where red, green and blue
+          each changed by at most 8 on a 0–255 scale. Both compare with the
+          frozen render.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Photo ID</th>
+                <th>Render time</th>
+                <th>Garment error¹</th>
+                <th>Similarity</th>
+                <th>Within 8</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p class="legend">
+          ¹ Mean absolute RGB error versus the original garment photograph.
+          Lower is better. Each photo has equal weight in the summary.
+          <span id="timingNote"></span>
+        </p>
+      </section>
+      <section>
+        <h2>Inspect a block at one step</h2>
+        <p>
+          The original model processes its features three times. Each cell
+          measures how much one block changed its input, averaged over the 14
+          training photographs.
+        </p>
+        <div class="controls">
+          <label
+            >Block family<select id="family">
+              <option value="single">24 single-stream blocks</option>
+              <option value="dual">8 dual-stream blocks</option>
+            </select></label
+          >
+        </div>
+        <div class="scroller">
+          <div
+            id="heat"
+            class="heat"
+            role="group"
+            aria-label="Block responses at three denoising steps"
+          ></div>
+        </div>
+        <p class="legend">
+          Darker cells indicate larger relative changes within a block family.
+          The single-stream scale runs from 0–20%. The dual-stream scale spans
+          10–1,000% on a logarithmic scale. × marks a dense
+          evaluation bypassed or replaced in the selected experiment.
+        </p>
+        <p id="readout" class="readout" aria-live="polite"></p>
+      </section>
+      <section>
+        <h2>What changed on camera?</h2>
+        <p>
+          A product photo and a model-worn garment went through the full studio
+          renderer. These views retain the camera framing. The publication copy
+          obscures the face.
+        </p>
+        <figure>
+          <img
+            src="__CAMERA__"
+            alt="Face-obscured camera comparisons of the ordinary Q4, selected schedule, compressed student and all-single-stream Q3 checkpoint"
+          />
+          <figcaption id="cameraCaption"></figcaption>
+        </figure>
+        <details>
+          <summary>See the twelve-block cut on the real blue shirt</summary>
+          <figure>
+            <img
+              src="__STRESS__"
+              alt="Five head-free garment crops. The twelve-block student loses the original blue shirt."
+            />
+            <figcaption>
+              The twelve-block student passed the automated crop and anatomy
+              checks. The garment visibly disappears in its output.
+            </figcaption>
+          </figure>
+        </details>
+      </section>
+      <section>
+        <h2>Read the experiment</h2>
+        <details open>
+          <summary>What did the small model learn?</summary>
+          <p>
+            At a selected block, we saved the incoming feature vector and the
+            change the original block made. A small student learned one
+            correction per channel and eight shared directions. Each denoising
+            step has its own coefficients. The photo test checks whether a
+            locally accurate prediction still makes a faithful garment after
+            every later block runs.
+          </p>
+        </details>
+        <details>
+          <summary>What is stored, and what is active?</summary>
+          <p>
+            The original editor contains eight dual-stream blocks and 24
+            single-stream blocks. A time schedule keeps the weights and bypasses
+            particular visits. A structural checkpoint omits the selected dense
+            tensors from its files. Three-bit quantization stores a coarser
+            number in each selected projection and keeps its computations.
+            Lossless storage preserves the numerical weights.
+          </p>
+          <p id="varianceResults"></p>
+        </details>
+        <details>
+          <summary>Can one photograph be reused for another outfit?</summary>
+          <p>
+            The VAE first encodes each input photograph. A memory cache can
+            reuse that encoding when exactly the same person or product appears
+            in the next request. All 32 transformer blocks still render the
+            changed pair. A blue-shirt request primed the cache for three trials.
+          </p>
+          <p id="reuseResults"></p>
+        </details>
+        <details>
+          <summary>Does this measure real fit?</summary>
+          <p>
+            For the five test photos, an annotated mask extracts the garment
+            reference and blanks its pixels on the person. The original photograph
+            supplies a known answer. The studio examples show
+            a genuinely different garment on the source person. Their true worn
+            appearance and physical measurements are unavailable. Camera-image
+            similarity measures change relative to the frozen editor.
+          </p>
+        </details>
+        <details>
+          <summary>How can I use a phone or Windows laptop?</summary>
+          <p>
+            This inspector opens directly in a browser. The measured renderer
+            uses MLX on Apple Silicon. A second device can act as a browser
+            client to a reachable Mac-hosted studio. Native generation on iPhone
+            and Android requires a model port and on-device testing.
+          </p>
+        </details>
+      </section>
+      <p class="foot">
+        Recorded measurements · FLUX.2 Klein 9B KV · seed 42 · M4 Air with 24 GB
+      </p>
+    </main>
+    <script id="evidence" type="application/json">
+      __EVIDENCE__
+    </script>
+    <script>
+      const D = JSON.parse(document.getElementById("evidence").textContent),
+        id = (x) => document.getElementById(x);
+      if (location.pathname === "/research/depth")
+        id("oldLab").href = "/research";
+      let block = 9,
+        step = 2;
+      const label = (n) =>
+        n === "frozen"
+          ? "Original Q4"
+          : n === "archive"
+            ? "Q4 from a lossless archive"
+            : n === "q3-all-single"
+              ? "Three-bit single-stream projections"
+              : n.startsWith("student")
+                ? "Trained replacement · " + n.slice(7) + " blocks"
+                : n.startsWith("drop")
+                  ? "Remove " + n.slice(4) + " blocks"
+                  : n.startsWith("reuse")
+                    ? "Reuse " + n.slice(4) + " updates on step 3"
+                    : n.startsWith("later")
+                      ? "Skip " + n.slice(5) + " blocks on steps 2 and 3"
+                      : "Skip " + n.slice(4) + " on step 3";
+      function describe(n) {
+        if (n === "frozen")
+          return "All 32 original blocks run on each of the three passes.";
+        if (n === "archive")
+          return "The original weights load directly from a single compressed file. The size includes all ten archived model files.";
+        if (n === "q3-all-single")
+          return "All 32 blocks run. Two projections in each of the 24 single-stream blocks store three-bit weights.";
+        if (n.startsWith("student"))
+          return "Each removed dense block is replaced by a trained, step-specific rank-8 residual predictor.";
+        if (n.startsWith("drop"))
+          return "These dense blocks are bypassed on all three passes. This identity control tests what the learned replacement adds.";
+        if (n.startsWith("reuse"))
+          return "The model saves the preceding pass’s feature change and applies it again at selected blocks on the last pass.";
+        return "The full reference-extraction pass runs first. On selected later visits, the incoming features pass straight through.";
+      }
+      function pct(n) {
+        return (100 * n).toFixed(1) + "%";
+      }
+      function mean(a) {
+        return a.reduce((s, n) => s + n, 0) / a.length;
+      }
+      function median(a) {
+        a = [...a].sort((x, y) => x - y);
+        return (
+          (a[Math.floor((a.length - 1) / 2)] + a[Math.floor(a.length / 2)]) / 2
+        );
+      }
+      function options() {
+        const names = [...new Set(D[id("split").value].map((r) => r.method))];
+        const prev = id("method").value;
+        id("method").replaceChildren(
+          ...names.map((n) => new Option(label(n), n)),
+        );
+        id("method").value = names.includes(prev)
+          ? prev
+          : names.includes(D.selection.temporal)
+            ? D.selection.temporal
+            : names[0];
+        update();
+      }
+      function update() {
+        const name = id("method").value,
+          rows = D[id("split").value].filter((r) => r.method === name);
+        id("methodText").textContent = describe(name);
+        const fresh = name === "q3-all-single" || (id("split").value === "test" && D.independently_timed.includes(name));
+        id("timingNote").textContent = fresh
+          ? " Timings come from an independently loaded worker after one warmup."
+          : " Timings come from the shared evaluation worker with the interventions interleaved by photo.";
+        id("size").textContent = D.sizes[name]
+          ? (D.sizes[name] / 1e6).toLocaleString("en-US", {
+              maximumFractionDigits: 0,
+            }) + " MB"
+          : "In memory";
+        id("sizeLabel").textContent = D.sizes[name]
+          ? "Measured stored size"
+          : "No separate weight files measured";
+        id("seconds").textContent =
+          median(rows.map((r) => r.wall_seconds)).toFixed(1) + " s";
+        id("ssim").textContent = mean(rows.map((r) => r.garment_ssim)).toFixed(
+          3,
+        );
+        id("pixels").textContent = pct(
+          mean(rows.map((r) => r.garment_within8)),
+        );
+        id("rows").replaceChildren(
+          ...rows.map((r) => {
+            const tr = document.createElement("tr");
+            for (const v of [
+              r.id,
+              r.wall_seconds.toFixed(1) + " s",
+              r.garment_mae.toFixed(2),
+              r.garment_ssim.toFixed(3),
+              pct(r.garment_within8),
+            ]) {
+              const td = document.createElement("td");
+              td.textContent = v;
+              tr.append(td);
+            }
+            return tr;
+          }),
+        );
+        draw();
+      }
+      function draw() {
+        const fam = id("family").value,
+          m = fam === "single" ? D.single : D.dual,
+          scheme = D.schedule[id("method").value] || [[], [], []],
+          heat = id("heat");
+        block = Math.min(block, m.length - 1);
+        const selected = fam === "single" && scheme[step].includes(block);
+        heat.replaceChildren();
+        heat.style.gridTemplateColumns =
+          "48px repeat(" + m.length + ", minmax(0,1fr))";
+        heat.style.minWidth = m.length === 8 ? "340px" : "";
+        function txt(s, cl = "") {
+          const a = document.createElement("span");
+          a.textContent = s;
+          a.className = cl;
+          heat.append(a);
+        }
+        txt("Block", "step");
+        m.forEach((_, i) => txt(i));
+        for (let s = 0; s < 3; s++) {
+          txt("Step " + (s + 1), "step");
+          for (let b = 0; b < m.length; b++) {
+            const cell = document.createElement("button"),
+              v = m[b][s],
+              active = fam === "single" && scheme[s].includes(b),
+              t = Math.max(0, Math.min(1, fam === "single" ? v / 0.2 : Math.log10(Math.max(0.1, v) * 10) / 2));
+            cell.className =
+              "cell" + (b === block && s === step ? " current" : "");
+            cell.dataset.b = b;
+            cell.dataset.s = s;
+            cell.style.background =
+              "rgb(" +
+              [228 - 175 * t, 239 - 124 * t, 221 - 132 * t]
+                .map(Math.round)
+                .join(",") +
+              ")";
+            cell.style.color = t > 0.65 ? "white" : "#173b36";
+            cell.textContent = active ? "×" : "";
+            cell.title = "Block " + b + ", step " + (s + 1) + ", " + pct(v);
+            cell.setAttribute(
+              "aria-label",
+              cell.title + (active ? ", changed by this method" : ""),
+            );
+            cell.setAttribute(
+              "aria-pressed",
+              String(b === block && s === step),
+            );
+            cell.tabIndex = b === block && s === step ? 0 : -1;
+            cell.addEventListener("keydown", (event) => {
+              const moves = {
+                ArrowLeft: [-1, 0],
+                ArrowRight: [1, 0],
+                ArrowUp: [0, -1],
+                ArrowDown: [0, 1],
+              };
+              if (!moves[event.key]) return;
+              event.preventDefault();
+              const [dx, dy] = moves[event.key];
+              block = Math.max(0, Math.min(m.length - 1, b + dx));
+              step = Math.max(0, Math.min(2, s + dy));
+              draw();
+              heat.querySelector(".current").focus();
+            });
+            cell.addEventListener("click", () => {
+              block = b;
+              step = s;
+              draw();
+              heat.querySelector(".current").focus({ preventScroll: true });
+            });
+            heat.append(cell);
+          }
+        }
+        id("readout").textContent =
+          "Block " +
+          block +
+          " · step " +
+          (step + 1) +
+          ". Its update had " +
+          pct(m[block][step]) +
+          " of the incoming feature magnitude (root mean square). " +
+          (selected
+            ? id("method").value.startsWith("student")
+              ? "A trained rank-eight student predicts this block’s update."
+              : id("method").value.startsWith("reuse")
+                ? "The previous step’s update is reused here."
+                : "This visit passes the incoming features straight through."
+            : id("method").value === "q3-all-single" && fam === "single"
+              ? "This block runs with two three-bit projections."
+              : "The chosen method retains this evaluation.") +
+          " A small update can still move a collar edge in the final image.";
+      }
+      id("split").addEventListener("change", options);
+      id("method").addEventListener("change", update);
+      id("family").addEventListener("change", draw);
+      id("cameraCaption").textContent = D.cameraCaption;
+      const pairs = D.reuse.pairs, equal = pairs.filter(r => r.max_rgb_delta === 0).length;
+      id("reuseResults").textContent = equal + " of " + pairs.length + " full-size outputs matched every RGB channel. The median paired time difference (original minus reuse) was " + D.reuse.median_seconds_saved.toFixed(2) + " seconds. A positive value means reuse finished sooner.";
+      const files = D.variance.projection_files, trials = D.variance.complete_renders;
+      id("varianceResults").textContent = "The VAE encoder discards the last 32 rows of its 64-row posterior projection. Removing those rows saved " + (files.original.parameters - files.mean.parameters).toLocaleString("en-US") + " coefficients and " + (files.original.payload_bytes - files.mean.payload_bytes).toLocaleString("en-US") + " bytes. " + trials.filter(r => r.max_delta === 0).length + " of " + trials.length + " complete comparisons reproduced the original Q3 render exactly.";
+      options();
+    </script>
+  </body>
+</html>

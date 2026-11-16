@@ -1,0 +1,12 @@
+{
+  "training_photos": 14,
+  "calibration_block_visits": 1344,
+  "validation": 45,
+  "test": 30,
+  "studio": 13,
+  "separate_worker_outputs": 30,
+  "secondary_quant_renders": 10,
+  "reference_reuse_pairs": 3,
+  "independent_reviewers": 0,
+  "physical_wear_trials": 0
+}

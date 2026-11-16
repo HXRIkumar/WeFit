@@ -1,0 +1,16 @@
+flowchart TB
+    INPUT["Person in a neutral top + garment reference<br/>Same seed and three denoising passes"]:::input
+    INPUT --> TEACH["Frozen FLUX.2 Klein 9B<br/>8 dual-stream + 24 single-stream blocks"]:::teacher
+    TEACH --> TRACE["Record each block's input and output<br/>14 training photos × 3 steps × 32 blocks"]:::teacher
+    TRACE --> TIME["Change when a block runs<br/>Keep all weights. Skip or reuse a later update."]:::time
+    TRACE --> FIT["Learn a replacement from teacher examples<br/>Per-channel correction + rank-8 residual"]:::student
+    FIT --> SMALL["Test three depths during validation<br/>Replace 2, 6 or 12 dense blocks at every step"]:::student
+    TIME --> VAL["Compare rendered garments on 3 new photos<br/>Choose a schedule and a checkpoint size"]:::eval
+    SMALL --> VAL
+    VAL --> TEST["5 untouched photos + camera try-ons<br/>Measure garment detail, time, memory and bytes"]:::eval
+    TEST --> PROOF["Load 2- and 12-block checkpoints from disk<br/>Verify pixels against the in-memory experiment"]:::teacher
+    classDef input fill:#f1e9d7,stroke:#a08050,color:#382f20;
+    classDef teacher fill:#e4eef0,stroke:#53777c,color:#193a41;
+    classDef time fill:#e3efe8,stroke:#4b8068,color:#173e2c;
+    classDef student fill:#f1e7de,stroke:#a26e4e,color:#4a3125;
+    classDef eval fill:#f4f2eb,stroke:#848477,color:#2e352e;

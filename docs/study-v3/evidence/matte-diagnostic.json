@@ -1,0 +1,18 @@
+{
+  "fresh_vs_next": {
+    "different": 795,
+    "max": 32
+  },
+  "fresh_vs_zero": {
+    "different": 0,
+    "max": 0
+  },
+  "zero_vs_other": {
+    "different": 2798,
+    "max": 32
+  },
+  "reset_zero_twice": {
+    "different": 0,
+    "max": 0
+  }
+}

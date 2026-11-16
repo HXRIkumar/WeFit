@@ -2,6 +2,12 @@
 
 WeFit is a local virtual try-on research project. Give the Apple Silicon renderer a person photo and a garment photo. It locates the clothing, edits that area with FLUX.2 Klein 9B and returns a photograph. The research code runs independently of the account-based studio.
 
+## V3 · How much can the image editor skip?
+
+We trained residual replacements and tested bypassing or replacing 2, 6 or 12 blocks of the **5,271.9 MB** Q4 editor. The two- and twelve-block students also ran from independently loaded, physically smaller checkpoints. The twelve-block checkpoint is **3,810.3 MB**. Its mean garment similarity on five unseen tops was **0.185**. In a real camera trial it lost the blue shirt even though the existing anatomy check accepted the output. The interactive lab shows both the garment and the individual block responses. The ordinary studio retains full Q4.
+
+For original quality with less local storage, the new loader runs Q4 directly from a **4,779.9 MB** lossless ZIP. All **2,555,904 RGB channels** matched the full-directory reference across five test photos and one 576 × 768 camera render. A separate phone-width browser session registered, uploaded both real images and downloaded the resulting JPEG from the Mac-hosted studio. An optional reference-encoding cache was tested on three changed person/product pairs. **3/3** were pixel-identical to the paired originals, with a median of **-0.19 s** for original time minus reuse time. The study also covers 24-block mixed Q3, later-step bypasses, low-rank student training, load time, warm latency and peak MLX memory. [Interactive lab download](https://github.com/HXRIkumar/WeFit/releases/download/v3.0.0/depth-lab.html) · [V3 illustrated PDF](docs/study-v3/WeFit-V3-depth-study.pdf) · [Findings and device support](docs/study-v3/README.md) · [Reproduce the experiments](docs/study-v3/REPRODUCE.md)
+
 ## V2 · Inside the model
 
 We trained a **16,896-parameter LoRA adapter** on the final image layer while keeping the original 9B transformer frozen. Fourteen Fashionpedia photographs supplied training targets, five selected the adapter and five tested it. The interactive inspector lets you pick a shirt patch, see its numerical response, follow a connection into the output and read how training changed it. It also shows measurements at **all 32 transformer blocks** and the results of bypassing blocks or changing their weight precision.
@@ -14,7 +20,7 @@ For repeated experiments on the **same** person, garment and seed, we saved the 
 
 On the M4 Air, a fresh worker answered after **6.80 s**. The first complete photo took **55.37 s**. Across **20 subsequent requests**, the median was **110.44 s**, the nearest-rank p95 was **142.29 s**, and all 20 crops completed in one pass. Each request generated a new result. Together these four cases cover one person, two camera captures and three products. [Raw request timings](docs/study-v2/evidence/requests.jsonl)
 
-The running Q3/Q4 experiment saved **163.6 MB** and raised garment RGB error from **27.69 to 28.01** against the matched Q4 adapter. For storage, lossless compression of the original model saved **503.5 MB (9.5%)**. All ten original files matched after decompression. Running that archive requires extracting it first. [Precision experiment](docs/study-v2/evidence/mixed-checkpoint.json) · [File-by-file archive verification](docs/study-v2/evidence/archive.json)
+The running Q3/Q4 experiment saved **163.6 MB** and raised garment RGB error from **27.69 to 28.01** against the matched Q4 adapter. In the V2 storage test, lossless compression of the original model saved **503.5 MB (9.5%)**. All ten original files matched after decompression. The V2 loader required extraction. V3 can run this archive directly. [Precision experiment](docs/study-v2/evidence/mixed-checkpoint.json) · [File-by-file archive verification](docs/study-v2/evidence/archive.json)
 
 ## V1 · From the handoff to the local photo editor
 

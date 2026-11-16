@@ -83,19 +83,34 @@ class KleinRuntime:
 
         torch.set_num_threads(4)
         self.weight_profile = "q4"
+        self.weight_storage = "zip" if weights_path.is_file() and weights_path.suffix.lower() == ".zip" else "directory"
         manifest = weights_path / "wefit-mixed.json"
         if manifest.is_file():
             from .klein_prompts import MODEL_REVISION
             info = json.loads(manifest.read_text())
-            if info.get("base_revision") != MODEL_REVISION or info.get("profile") != "wefit-q3-six-blocks":
+            if info.get("base_revision") != MODEL_REVISION or info.get("profile") not in ("wefit-q3-six-blocks","wefit-q3-24-blocks"):
                 raise ValueError("Unrecognized local mixed-precision checkpoint.")
             self.weight_profile = info["profile"]
+        self.depth_profile = (weights_path / "wefit-depth.json").is_file()
+        if self.depth_profile:
+            from .klein_depth import read_depth_manifest
+            self.weight_profile = read_depth_manifest(weights_path)["profile"]
+            if manifest.is_file() or os.getenv("WEFIT_KLEIN_UPPER_ADAPTER"):
+                raise ValueError("Choose one depth, precision or output-layer experiment per worker.")
         self.model = CachedInstructionKlein(weights_path, cache_path)
+        self.reference_cache = getattr(self.model.vae, "reference_latents", None)
         mx.eval(self.model.parameters())
         self.parser = FashnHumanParser(model_id=str(parser_path), device="cpu")
         self.person_cache = OrderedDict()
         self.upper_adapter = None
         self.upper_adapter_sha256 = ""
+        self.temporal_policy = None
+        policy_path = os.getenv("WEFIT_KLEIN_DEPTH_POLICY")
+        if policy_path:
+            from .klein_depth import load_schedule
+            if self.weight_profile != "q4" or os.getenv("WEFIT_KLEIN_UPPER_ADAPTER"):
+                raise ValueError("The step schedule uses the ordinary Q4 checkpoint.")
+            self.temporal_policy = load_schedule(policy_path)
         adapter_path = os.getenv("WEFIT_KLEIN_UPPER_ADAPTER")
         if adapter_path:
             from .klein_adapter import Adapter
@@ -125,8 +140,14 @@ class KleinRuntime:
         import mlx.core as mx
         from .klein_prompts import INSTRUCTIONS
 
+        if getattr(self, "depth_profile", False) and (kind != "upper" or steps != 3):
+            raise ValueError("This depth checkpoint was trained for three-step upper-body try-on.")
         use_adapter = self.upper_adapter is not None and kind == "upper" and steps == 3
+        schedule = getattr(self, "temporal_policy", None) if kind == "upper" and steps == 3 else None
         started = time.perf_counter()
+        cache = getattr(self, "reference_cache", None)
+        initial_hits = cache.hits if cache else 0
+        initial_misses = cache.misses if cache else 0
         mx.reset_peak_memory()
         # The tested 768 profile retained the reference design more reliably
         # than the much slower 1024 trial. Do not upscale a smaller generation.
@@ -152,6 +173,9 @@ class KleinRuntime:
                     if use_adapter:
                         from .klein_adapter import final_projection
                         context = final_projection(self.model, steps, adapter=self.upper_adapter)
+                    elif schedule:
+                        from .klein_depth import apply_schedule
+                        context = apply_schedule(self.model, schedule)
                     with context:
                         result = self.model.generate_image(seed=42, prompt=INSTRUCTIONS[kind],
                             num_inference_steps=steps, width=region.size[0], height=region.size[1], guidance=1.0,
@@ -185,7 +209,9 @@ class KleinRuntime:
                     "width": region.size[0], "height": region.size[1],
                     "export_size": size, "region_box": region.box, "initial_region": initial_region, "region_fallback": fallback,
                     "render_region": "full" if region.full_frame else "clothing",
-                    "conditioning": conditioning, "weight_profile": self.weight_profile, "adapter_sha256": self.upper_adapter_sha256 if use_adapter else "",
+                    "conditioning": conditioning, "weight_profile": schedule["method"] if schedule else self.weight_profile, "adapter_sha256": self.upper_adapter_sha256 if use_adapter else "",
+                    "reference_hits": cache.hits - initial_hits if cache else 0,
+                    "reference_misses": cache.misses - initial_misses if cache else 0,
                     "steps": steps, "person_cached": cached, "peak_mlx_gb": mx.get_peak_memory()/1e9}
             finally:
                 mx.synchronize()

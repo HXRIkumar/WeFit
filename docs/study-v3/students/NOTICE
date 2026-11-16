@@ -1,0 +1,3 @@
+WeFit V3 research modification of the FLUX.2 Klein 9B KV image editor. The original model was developed by Black Forest Labs. The Q4 conversion comes from mflux-community/flux2-klein-9b-kv-mflux-q4, revision d144dcb1f70540f581ed99930ee61aac21b5c6d6.
+
+WeFit trained new time-specific, rank-eight residual students using the frozen teacher and 14 Fashionpedia images. This file contains the newly fitted coefficients for 12 selected blocks. All upstream weight shards are obtained separately. The accompanying FLUX non-commercial license applies.

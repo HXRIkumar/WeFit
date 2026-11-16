@@ -63,6 +63,10 @@ def preserve_reference_edit(source, generated, old_labels, kind, new_labels):
     """Keep identity and unchanged clothes; retain the new natural silhouette."""
     if kind not in TARGETS:
         raise ValueError("Unknown garment region")
+    # GrabCut initializes color clusters with OpenCV's thread-local RNG.
+    # Start each complete composite at its fresh-worker state so a previous
+    # look cannot change this photo's hair, sleeve or background edges.
+    cv2.setRNGSeed(0)
     source = source.convert("RGB").resize(generated.size, Image.Resampling.LANCZOS)
     old = np.asarray(Image.fromarray(np.asarray(old_labels, np.uint8)).resize(generated.size, Image.Resampling.NEAREST))
     new = np.asarray(Image.fromarray(np.asarray(new_labels, np.uint8)).resize(generated.size, Image.Resampling.NEAREST))

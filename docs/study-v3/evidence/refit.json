@@ -1,0 +1,10 @@
+{
+  "training_photos": 14,
+  "fit_parameters": 2654208,
+  "equal_parameters": 2654208,
+  "max_abs_delta": 0.0,
+  "file_sha256": "530f7327b3750cf85aba555db437d9f5201bb7364c97e86c22a4abb49959b0d9",
+  "first_file_sha256": "530f7327b3750cf85aba555db437d9f5201bb7364c97e86c22a4abb49959b0d9",
+  "repeat_fit_seconds": 4.61,
+  "procedure": "Second invocation of the released rank-eight fit from the same recorded teacher examples on the M4 Mac, with two numerical-library threads."
+}

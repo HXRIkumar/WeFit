@@ -1,0 +1,30 @@
+[
+  {
+    "member": "transformer/0.safetensors",
+    "sha256": "d2d305be17d11b98f2353a4318495904a3c74259e9a1905b2c93fb5f88232f9e",
+    "tensors": 341,
+    "matched_payload_bytes": 2143133696,
+    "largest_tensor_bytes": 50331648
+  },
+  {
+    "member": "transformer/1.safetensors",
+    "sha256": "68804583c986f32493718e9bae3f8239db98a0526362fa9262a6342a6a59994f",
+    "tensors": 136,
+    "matched_payload_bytes": 2085626368,
+    "largest_tensor_bytes": 75497472
+  },
+  {
+    "member": "transformer/2.safetensors",
+    "sha256": "20e903436caed8d9e048117ae28aef4425bcd367c7dc280618376073782cb337",
+    "tensors": 62,
+    "matched_payload_bytes": 877956608,
+    "largest_tensor_bytes": 75497472
+  },
+  {
+    "member": "vae/0.safetensors",
+    "sha256": "ab26bf1613e6b51a955bfaf05409e2a16138a072ba0bb7f4fc768236fb4a990b",
+    "tensors": 266,
+    "matched_payload_bytes": 165078086,
+    "largest_tensor_bytes": 4718592
+  }
+]

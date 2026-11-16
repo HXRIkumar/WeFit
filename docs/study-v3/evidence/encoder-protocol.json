@@ -1,0 +1,7 @@
+{
+  "experiment": "vae-posterior-mean",
+  "profile": "wefit-q3-24-blocks",
+  "decision": "Secondary analytic reachability test. Specified after the depth and native study and before the all-single-stream Q3 model was evaluated.",
+  "change": "Store and compute only the first 32 output rows of the VAE posterior projection. The pinned inference code discards the other 32 rows before reference conditioning. Keep all encoder inputs, original dtype and retained coefficients.",
+  "measurement": "Count payload bytes and physical standalone layer file sizes. Compare retained encoder values on a held-out image, a camera image and a real garment, then compare one complete held-out render and the first successful camera result against the identical transformer with the unmodified VAE."
+}

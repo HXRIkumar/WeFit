@@ -11,8 +11,11 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
-          cache-dependency-path: requirements-checks.txt
-      - run: python -m pip install -r requirements-checks.txt
+          cache-dependency-path: |
+            requirements-checks.txt
+            requirements-study-v3.txt
+      - run: python -m pip install -r requirements-checks.txt -r requirements-study-v3.txt
       - run: python -m pytest -q tests
       - run: python -m tools.verify_evidence
       - run: python -m tools.verify_study
+      - run: python -m tools.verify_depth

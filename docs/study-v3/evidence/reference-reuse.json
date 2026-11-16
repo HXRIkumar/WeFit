@@ -1,0 +1,121 @@
+{
+  "profile": "q4",
+  "capacity_bytes": 8388608,
+  "ttl_seconds": 600,
+  "prime": {
+    "cache_enabled": true,
+    "wall_seconds": 77.91764,
+    "encoder_hits": 0,
+    "encoder_misses": 2,
+    "retained_latent_bytes": 662528,
+    "fallback": false,
+    "person_parser_cached": false,
+    "rgb_sha256": "ca96f553af667537daf081188137e029c68c1f410ecc3ea2369a4788ea0127c2"
+  },
+  "pairs": [
+    {
+      "case": "polo-worn",
+      "order": [
+        "reuse",
+        "original"
+      ],
+      "reuse": {
+        "cache_enabled": true,
+        "wall_seconds": 86.6112,
+        "encoder_hits": 1,
+        "encoder_misses": 1,
+        "retained_latent_bytes": 1187328,
+        "fallback": false,
+        "person_parser_cached": true,
+        "rgb_sha256": "a3a1c0973201e03b7fed120616ed7072b90abb188cd5925bc17866c8caf79b0f"
+      },
+      "original": {
+        "cache_enabled": false,
+        "wall_seconds": 87.21378,
+        "encoder_hits": 0,
+        "encoder_misses": 0,
+        "retained_latent_bytes": 1187328,
+        "fallback": false,
+        "person_parser_cached": true,
+        "rgb_sha256": "a3a1c0973201e03b7fed120616ed7072b90abb188cd5925bc17866c8caf79b0f"
+      },
+      "seconds_saved": 0.6025800000000032,
+      "matching_rgb_channels": 1327104,
+      "channels": 1327104,
+      "max_rgb_delta": 0,
+      "previous_frozen_rgb_sha256": "a0ee73e40ab439088b1882e4dd6857a7289ae1eb14a176e5b9276a8587935daa",
+      "previous_max_rgb_delta": 92,
+      "previous_matching_channels": 1322262
+    },
+    {
+      "case": "zipneck-worn",
+      "order": [
+        "original",
+        "reuse"
+      ],
+      "reuse": {
+        "cache_enabled": true,
+        "wall_seconds": 81.79216,
+        "encoder_hits": 1,
+        "encoder_misses": 1,
+        "retained_latent_bytes": 1599488,
+        "fallback": false,
+        "person_parser_cached": false,
+        "rgb_sha256": "618e65c0552f0bdc5fb5f69a6ce5f910e112e45181cd9ef19cc67b283915703c"
+      },
+      "original": {
+        "cache_enabled": false,
+        "wall_seconds": 81.59844,
+        "encoder_hits": 0,
+        "encoder_misses": 0,
+        "retained_latent_bytes": 1187328,
+        "fallback": false,
+        "person_parser_cached": true,
+        "rgb_sha256": "618e65c0552f0bdc5fb5f69a6ce5f910e112e45181cd9ef19cc67b283915703c"
+      },
+      "seconds_saved": -0.193719999999999,
+      "matching_rgb_channels": 1327104,
+      "channels": 1327104,
+      "max_rgb_delta": 0,
+      "previous_frozen_rgb_sha256": "c45fd616253905207c24c149ea64e93ea48813337187fd27af41486e51c3e72d",
+      "previous_max_rgb_delta": 50,
+      "previous_matching_channels": 1320455
+    },
+    {
+      "case": "blue-dim-camera",
+      "order": [
+        "reuse",
+        "original"
+      ],
+      "reuse": {
+        "cache_enabled": true,
+        "wall_seconds": 77.02319,
+        "encoder_hits": 1,
+        "encoder_misses": 1,
+        "retained_latent_bytes": 1931264,
+        "fallback": false,
+        "person_parser_cached": true,
+        "rgb_sha256": "f7687010f532bfd585683b4c107b6e1c5fdbb25c67a639c83db50dbcc5afc1d1"
+      },
+      "original": {
+        "cache_enabled": false,
+        "wall_seconds": 76.78593,
+        "encoder_hits": 0,
+        "encoder_misses": 0,
+        "retained_latent_bytes": 1931264,
+        "fallback": false,
+        "person_parser_cached": true,
+        "rgb_sha256": "f7687010f532bfd585683b4c107b6e1c5fdbb25c67a639c83db50dbcc5afc1d1"
+      },
+      "seconds_saved": -0.23726000000000624,
+      "matching_rgb_channels": 1327104,
+      "channels": 1327104,
+      "max_rgb_delta": 0,
+      "previous_frozen_rgb_sha256": "1dd6b74c757ae16e2c693f41b136842ac86180699496715a4bb238978b6d2668",
+      "previous_max_rgb_delta": 23,
+      "previous_matching_channels": 1327056
+    }
+  ],
+  "mean_seconds_saved": 0.05719999999999933,
+  "median_seconds_saved": -0.193719999999999
+}

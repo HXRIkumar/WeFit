@@ -1,0 +1,23 @@
+{
+  "workflow": "Registered in an isolated studio, uploaded the actual person and blue garment, generated, compared original/result and downloaded the saved JPEG.",
+  "browser": "Chromium with a touch viewport",
+  "viewport": [
+    390,
+    844
+  ],
+  "physical_phone": false,
+  "renderer_device": "M4 MacBook Air",
+  "storage": "zip",
+  "profile": "q4",
+  "browser_errors": 0,
+  "click_to_result_s": 78.459,
+  "width": 576,
+  "height": 768,
+  "jpeg_sha256": "9fa325ae6182792ea41347850c3a47f9db6d21206772dcc0fabe34fb3ce99995",
+  "independently_encoded_reference_sha256": "9fa325ae6182792ea41347850c3a47f9db6d21206772dcc0fabe34fb3ce99995",
+  "exact_file": true,
+  "matching_rgb_channels": 1327104,
+  "channels": 1327104,
+  "max_rgb_delta": 0,
+  "mean_rgb_delta": 0.0
+}

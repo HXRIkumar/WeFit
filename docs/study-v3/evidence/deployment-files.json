@@ -1,0 +1,31 @@
+{
+  "parts": {
+    "clothing_parser": {
+      "model.safetensors": {
+        "bytes": 256146352,
+        "sha256": "e43c8c8a9b04f28798f0a4630cf18caa2cdb27a0d454fae43a5716e6f7078244"
+      },
+      "config.json": {
+        "bytes": 1654,
+        "sha256": "87bd5b66419dbfa7c02cfbeb94e292454863b1606c5df29526b19a6c1de70d9f"
+      }
+    },
+    "fixed_instructions": {
+      "upper.npz": {
+        "bytes": 11912283,
+        "sha256": "b9e3a21a59cc4f0d53350abb9a7b35da4b93b25cba3dc825ef8efa4f063f0910"
+      },
+      "lower.npz": {
+        "bytes": 11918222,
+        "sha256": "439c6c1c3d004e8949659c93b81b4639f349b4f828f8ab257ba9980ad828701a"
+      },
+      "manifest.json": {
+        "bytes": 2089,
+        "sha256": "34ec0c8642538d9f0ea0214372a313574447aaf73928bf1c8782aadad766bad6"
+      }
+    }
+  },
+  "additional_bytes": 279980600,
+  "archive_plus_assets_bytes": 5059890964,
+  "installation_scope": "Stored model files and fixed instructions. Runtime libraries, user uploads, outputs and operating system are additional."
+}

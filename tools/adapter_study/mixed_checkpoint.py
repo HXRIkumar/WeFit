@@ -123,13 +123,17 @@ def rewrite_shard(source, dest, replacements):
                 copy_span(src, writer, end - begin)
 
 
-def build(source, out, activity_path):
+def build(source, out, activity_path, block_count=6):
     source = source.resolve()
     out = out.resolve()
     if out.exists() or source in out.parents:
         raise ValueError("Choose a new checkpoint folder outside the original weights.")
     split = json.loads(activity_path.read_text())
-    indices = split["residual_rms_order_low_to_high"][:6]
+    if block_count not in (6, 24):
+        raise ValueError("Choose six calibration-ranked blocks or all 24 single-stream blocks.")
+    indices = split["residual_rms_order_low_to_high"][:block_count]
+    if len(set(indices)) != block_count or any(type(i) is not int or not 0 <= i < 24 for i in indices):
+        raise ValueError("Invalid calibration block order")
     tensor_files = list(source.rglob("*.safetensors"))
     original_bytes = sum(p.stat().st_size for p in tensor_files)
     locations = {}
@@ -169,7 +173,7 @@ def build(source, out, activity_path):
         packed_bytes = sum(p.stat().st_size for p in candidate.rglob("*.safetensors"))
         result = {
             "base_revision": MODEL_REVISION,
-            "profile": "wefit-q3-six-blocks",
+            "profile": "wefit-q3-six-blocks" if block_count == 6 else "wefit-q3-24-blocks",
             "blocks": indices,
             "projections_requantized": len(errors),
             "source_quantization": 4,
@@ -190,8 +194,8 @@ def build(source, out, activity_path):
                 shutil.copy2(terms, candidate / name)
         with (candidate / "NOTICE").open("a") as notice:
             notice.write(
-                "\nWeFit V2 research modification. Twelve projections in six "
-                "single-stream transformer blocks were requantized from four "
+                (f"\nWeFit research modification. {2 * block_count} projections in {block_count} "
+                 "single-stream transformer blocks were requantized from four ") +
                 "to three bits. All transformer blocks and the original VAE "
                 "are retained. See wefit-mixed.json for the source revision, "
                 "changed tensors and checkpoint hashes.\n"
@@ -206,6 +210,7 @@ if __name__ == "__main__":
     p.add_argument("source", type=Path)
     p.add_argument("output", type=Path)
     p.add_argument("activity", type=Path)
+    p.add_argument("--blocks", type=int, choices=[6,24], default=6)
     a = p.parse_args()
-    r = build(a.source, a.output, a.activity)
+    r = build(a.source, a.output, a.activity, a.blocks)
     print(json.dumps(r, indent=2))
