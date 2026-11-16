@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant B as Browser
+    participant A as Studio API
+    participant W as Model worker
+    participant S as Local storage
+    B->>A: Submit the two photos
+    A->>S: Save inputs and create a job
+    A->>W: Send person, garment and category
+    Note over W: Mac  ·  Klein 9B on Metal<br/>Windows  ·  FASHN on PyTorch
+    W-->>A: Return an edited photo or an error
+    A->>S: Save a successful result and its finish time
+    B->>A: Check job status
+    A-->>B: Display the result for comparison

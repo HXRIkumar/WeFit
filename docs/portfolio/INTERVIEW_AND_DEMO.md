@@ -43,4 +43,18 @@ Built and benchmarked a local virtual try-on pipeline around a frozen 9B image e
 
 Choose a testable question about collar alignment, garment fidelity or latency. Use consenting subjects and licensed garments. Keep each person's photos in one split and hold out garments to test generalization. Photograph the same people actually wearing target garments when evaluating physical correspondence. Fix inputs, seed, precision and step count. Report cold startup, warm median and p95 over repeated runs, memory, retries and failures.
 
-For visual review, randomize the order, hide the method, and ask independent reviewers to rate collars, cuffs, logos, anatomy and background preservation against the source and target. A new training experiment could fit low-rank adapter weights (LoRA) on the training split, then compare the adapter with the frozen baseline on held-out inputs. This is future work. The current study contains one subject and supplies no population accuracy or physical-sizing score.
+For visual review, randomize the order, hide the method, and ask independent reviewers to rate collars, cuffs, logos, anatomy and background preservation against the source and target. A V2 training experiment can fit low-rank adapter weights (LoRA) on the training split, then compare the adapter with the frozen baseline on held-out inputs. V1 used the existing weights throughout. The V1 study contains one subject and supplies no population accuracy or physical-sizing score.
+
+## Questions at the demo table
+
+**Which laptop ran the results?** An Apple M4 MacBook Air with 24 GB of unified memory ran the Klein renderer. The full studio also has a Windows setup for an NVIDIA GPU using the FASHN renderer. The owner’s Windows laptop still needs a real generation check. Its speed and output can differ.
+
+**How do I explain the two large numbers on page one?** An early Mac model run took 251.87 seconds to draw a large image. A later end-to-end blue-shirt request took 56.36 seconds. We changed image size, step count and editing area between those observations. The original ZIP’s AI generation time is unknown. For a controlled experiment, show the six paired runs on page four.
+
+**When does the stopwatch start?** For a cold start, start it when you launch the model program and stop it when the program says it is ready. Time the first photo separately. For a warm run, send the next photo while the model remains loaded. Sort the times. The median describes the middle request. With 20 warm runs, the nearest-rank p95 is the 19th fastest. It helps answer how long a slower request takes.
+
+**What is a fallback?** If a crop clips fabric or changes hand positions, the program can redraw the whole picture. Count those retries and divide by the number of requests that used an automatic crop. Write the numerator and denominator so reviewers can see the sample size.
+
+**What did we train in V1?** The image model already knew how to edit pictures. We programmed what inputs it received, how much of the picture it drew, and how results were checked. LoRA would add two small trainable matrices to a chosen model layer. A training loss measures mistakes on labelled examples. An optimizer changes the new matrices to reduce those mistakes while the original weights stay fixed.
+
+Follow [the studio request](diagrams/studio.svg) from the browser to a saved job. Then follow [the Mac image renderer](diagrams/klein-renderer.svg) from the uploaded photos to the final pixels.

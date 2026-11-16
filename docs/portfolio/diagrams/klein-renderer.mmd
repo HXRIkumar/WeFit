@@ -1,0 +1,22 @@
+flowchart TB
+    person["Your camera photo"]:::input --> body["Body parser<br/>Mark cloth, skin and hands"]:::cpu
+    garment["Target garment photo"]:::input --> clean["Prepare garment<br/>Remove the shop model if present"]:::cpu
+    body --> prepared["Make a grey working copy<br/>Hide the old shirt design"]:::cpu
+    prepared --> encode
+    clean --> encode["VAE encoder<br/>Pictures become number grids"]:::transform
+    weights[("9B weights in Q4<br/>Learned by Black Forest Labs")]:::data
+    prompt[("Saved instruction<br/>Encoded once with Qwen3")]:::data
+    encode --> edit["Klein image transformer<br/>Reuse reference K/V; refine the clothing grid"]:::gpu
+    weights -.-> edit
+    prompt -.-> edit
+    edit --> decode["VAE decoder<br/>Number grid becomes pixels"]:::transform
+    decode --> check{"Crop and hands OK?"}:::decision
+    check -->|Yes| result["Restore and save<br/>Original head, room and untouched clothes"]:::cpu
+    check -->|No| retry["Retry the full frame once<br/>Reject persistent hand errors"]:::warn
+    classDef input fill:#e3eef5,stroke:#42627a,color:#142e42,stroke-width:2px;
+    classDef cpu fill:#edf3ef,stroke:#547767,color:#193d31,stroke-width:1.8px;
+    classDef transform fill:#dcebe6,stroke:#397362,color:#183b32,stroke-width:2px;
+    classDef gpu fill:#153e35,stroke:#153e35,color:#ffffff,stroke-width:3px;
+    classDef data fill:#f2ebdb,stroke:#947140,color:#473617,stroke-width:1.8px;
+    classDef decision fill:#f4ead8,stroke:#937346,color:#463318,stroke-width:2px;
+    classDef warn fill:#fbf5ed,stroke:#9a7858,color:#463628,stroke-width:1.8px;

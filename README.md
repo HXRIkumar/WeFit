@@ -2,6 +2,13 @@
 
 A local virtual try-on renderer for Apple Silicon. Give it a person photo and a garment photo. It locates the clothing, runs a frozen 9B image editor on the relevant part of the picture and returns a complete photograph. The research code here runs on its own. The complete account-based studio is maintained separately.
 
+**Measured on the M4 MacBook Air:** a 1024-pixel development run took **251.87 s** to render; the optimized blue-shirt request took **56.36 s** on the local client. These are different configurations and clocks. The original handoff has no logged AI runtime. The controlled three-pair experiment below isolates region rendering.
+
+| Computer | What is available | What has been tested |
+|---|---|---|
+| Apple Silicon Mac, 24 GB in the test | This public Klein 9B renderer and the full studio | Real local generation, photographed garments and measured timing |
+| Windows with an NVIDIA GPU | FASHN/PyTorch in the [complete studio](https://github.com/HXRIkumar/wefit-studio) | A Windows GPU run is pending. The 56.36 s figure is a Mac observation. |
+
 ![Source portrait, original archive overlay, and current blue shirt. All faces are blurred.](docs/portfolio/figures/handoff-comparison.png)
 
 The original project was supplied by a collaborator. Its default local overlay positioned a product cutout over the body. It also offered hosted and self-hosted AI options. The archive includes no measured AI run identifying the collaborator's engine, hardware and inputs. The centre image is a fresh replay of its default overlay on the same person and blue garment. In that replay the old navy top remains visible above the collar.
@@ -25,7 +32,9 @@ The supplied outputs matched saved app jobs at **65.53 s**, **64.55 s** and **69
 
 ## How it works
 
-![Person and garment preparation, cached Klein image editing, checks, source restoration and a full-frame retry.](docs/portfolio/figures/architecture.png)
+The [system sequence](docs/portfolio/diagrams/studio.svg) shows how a request moves through the studio. The [image editor architecture](docs/portfolio/diagrams/klein-renderer.svg) shows the actual model and where the weights, saved instructions and retry checks enter. Both figures were rendered from editable Mermaid source. [System source](docs/portfolio/diagrams/studio.mmd) · [Renderer source](docs/portfolio/diagrams/klein-renderer.mmd)
+
+![Portrait, neutral working copy and current fitted shirt](docs/portfolio/figures/working-copy.png)
 
 - **Prepare the references.** A FASHN human parser locates the source clothes. We fill the old design with grey in a working copy and isolate a target garment when it comes from a shop model.
 - **Reuse fixed work.** Two generic instructions are encoded offline with Qwen3. Their verified embeddings replace the text encoder at runtime. The trained reference K/V cache is materialized one layer at a time. Compiled blocks receive the current reference arrays explicitly.

@@ -149,10 +149,12 @@
     "cold_start_measured": false
   },
   "figures": {
-    "architecture.png": "f6968cf78a0c7c58b875c7a2ac77b9bf9ba41cf21ebb9b2e96a9c8127490b2c9",
+    "architecture.png": "a065a325d7ba914f758bd42e8b21ce0776df33a6cea41dab14292b872bbc2890",
     "collar-comparison.png": "c7fc525ff7b3e4b36e4145ed06df4488d616cbcc09a30ab220e9dcb75b5d1182",
     "garment-examples.png": "a0594bb175f7230ebbaeb944e604bb162fdd2dc75c735f15b271668bea58f205",
     "handoff-comparison.png": "22ad8a1c285347cb32912c6d8313cc55f706e22b1f9e15946f7b0bb12ca675c6",
-    "region-latency.png": "964d58ae3d79a031c778d92a5c637d2c97a2676a24ff712da326e958459ddd66"
+    "region-latency.png": "964d58ae3d79a031c778d92a5c637d2c97a2676a24ff712da326e958459ddd66",
+    "studio-flow.png": "4c1c2bc3a3f11a19619d7a2a37dd703c07efb3ec737878c5044e2c95cd197c68",
+    "working-copy.png": "798627cf31d3f24cc2f2a433e2e3d3c9d8671409fe96e9b28209314b009ca168"
   }
 }
