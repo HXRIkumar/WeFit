@@ -1,0 +1,9 @@
+-r requirements-checks.txt
+uvicorn==0.54.0
+fashn-human-parser==0.1.1
+torch==2.15.0
+torchvision==0.29.2
+transformers==5.23.0
+huggingface_hub==1.33.0
+mflux==0.24.0
+mlx==0.32.4

@@ -1,0 +1,158 @@
+{
+  "zip": {
+    "original_archive_sha256": "614ef5e1442a3b77ef336e1f86df1b18a710d08949cd45e8322d2943faf8909d",
+    "tested_source_zip_sha256": "1c6a2de5856f33abf4ea29a20182c44a0184cc799af9aa28ccd764fb4b9c1d60",
+    "counting": "Files by relative path and bytes. Directory entries and the pytest cache were excluded. Additions include third-party code and assets. Counts refer to the tested studio before the portfolio was added.",
+    "original_files": 55,
+    "tested_files": 205,
+    "unchanged_common": 38,
+    "changed_common": 17,
+    "added": 150,
+    "removed": 0,
+    "engine_file_sha256": "b0b20d2d4b2dd0ebefae47208a5400734094c4b003cbae74ffadb27e80784977",
+    "config_file_sha256": "c255d21371606bc68a4f06041f2a83e6ab143acb520121fa29c36326f40d143c",
+    "code_default": "overlay",
+    "example_env": "hf / yisol/IDM-VTON",
+    "original_ai_run_seconds": null,
+    "reason": "No historical AI job database, dated timing log or backend selection in the supplied archive. Runtime recollections are not instrumented measurements."
+  },
+  "zip_default_replay": {
+    "archive_sha256": "614ef5e1442a3b77ef336e1f86df1b18a710d08949cd45e8322d2943faf8909d",
+    "engine": "OverlayEngine",
+    "original_source_file": "tryon/app/engine.py",
+    "original_engine_sha256": "b0b20d2d4b2dd0ebefae47208a5400734094c4b003cbae74ffadb27e80784977",
+    "scope": "Engine.run on the same Mac in the installed application environment. Includes image load and geometric composition. Excludes interpreter import, JPEG export, job/API and transfer.",
+    "person_sha256": "b9d1db3db7c0fd4d749649db8f93ce32acafe11d6c11093cd4dc0f6dbfd96273",
+    "garment_sha256": "59d8312b107e23f119279cb63ee3109da212b7137ac23774e005e12697ea2bb9",
+    "image_size": [
+      767,
+      1024
+    ],
+    "seconds": [
+      0.485,
+      0.305,
+      0.327
+    ],
+    "median_seconds": 0.327
+  },
+  "exploratory_1024": {
+    "stage": "Raw generation timed by direct benchmark, separate from source ZIP",
+    "checkpoint": "d144dcb1f70540f581ed99930ee61aac21b5c6d6",
+    "width": 768,
+    "height": 1024,
+    "steps": 4,
+    "seed": 42,
+    "render_s": 251.87,
+    "with_load_s": 253.82,
+    "mlx_peak_gb": 9.0
+  },
+  "dim_camera_final": {
+    "wall_seconds": 56.36,
+    "inference_seconds": "56.24",
+    "sampling_seconds": "52.94",
+    "peak_mlx_gb": "8.30",
+    "render_pixels": "331776",
+    "steps": 3,
+    "render_region": "clothing",
+    "region_fallback": "false",
+    "person_sha256": "bdb330ba8715d255e7930845bef60e6a1d873ef0edf8727d5b7e5b3268df3c92",
+    "garment_sha256": "59d8312b107e23f119279cb63ee3109da212b7137ac23774e005e12697ea2bb9"
+  },
+  "gallery_scope": "App job creation to completion from the original SQLite timestamps, rounded to hundredths. Each supplied clipboard image matched the stored decoded RGB pixels before redaction. All three jobs use one source portrait.",
+  "gallery": [
+    {
+      "job": 42,
+      "garment": "Blue button-down",
+      "app_job_seconds": 65.53,
+      "reference_type": "flat-lay",
+      "export_size": [
+        576,
+        768
+      ],
+      "person_sha256": "b9d1db3db7c0fd4d749649db8f93ce32acafe11d6c11093cd4dc0f6dbfd96273",
+      "garment_sha256": "59d8312b107e23f119279cb63ee3109da212b7137ac23774e005e12697ea2bb9",
+      "matching_export_rgb_sha256": "f25cdbe9f54e10179d2c43fec513a064abc9c5ca54e0f0e96e71ac8df6867053",
+      "attachment_matches_saved_RGB": true
+    },
+    {
+      "job": 41,
+      "garment": "Colour-block zip-neck",
+      "app_job_seconds": 64.55,
+      "reference_type": "model",
+      "export_size": [
+        576,
+        768
+      ],
+      "person_sha256": "b9d1db3db7c0fd4d749649db8f93ce32acafe11d6c11093cd4dc0f6dbfd96273",
+      "garment_sha256": "128a6034ebbafe7ba86fe96b70374396206af968ffdf684ad954b997fcdef787",
+      "matching_export_rgb_sha256": "c3e8fa7b0aec2c459c1e72e7b65feac8f6b7e16ced1a1b2ac16a39c2d540e1a0",
+      "attachment_matches_saved_RGB": true
+    },
+    {
+      "job": 43,
+      "garment": "Burgundy polo",
+      "app_job_seconds": 69.4,
+      "reference_type": "model",
+      "export_size": [
+        576,
+        768
+      ],
+      "person_sha256": "b9d1db3db7c0fd4d749649db8f93ce32acafe11d6c11093cd4dc0f6dbfd96273",
+      "garment_sha256": "04d5816c7dc82bf834b569b201867dd4783c5feb4ac2de430344a88126881cdc",
+      "matching_export_rgb_sha256": "d4436f7e186a1128e84705390bfd29a74652b4c25326f6fe4caf436f694ca3da",
+      "attachment_matches_saved_RGB": true
+    }
+  ],
+  "release_browser_job_labels": {
+    "shirt": "Your look is ready. Created in 56s.",
+    "polo": "Your look is ready. Created in 1m 10s.",
+    "pants": "Your look is ready. Created in 51s.",
+    "shirt-detail": "Your look is ready. Created in 1m 40s."
+  },
+  "release_tests": {
+    "python": "110 passed, 2 skipped, 1 warning in 39.29s",
+    "node": "6 Node checks passed",
+    "deps": "No broken requirements found.",
+    "fixture": "a simulated browser camera",
+    "weights": "Pinned checkpoints reused by symlink; app/dependencies installed fresh."
+  },
+  "region_experiment": {
+    "hardware": "MacBook Air, Apple M4, 24 GB unified memory",
+    "python": "3.11.13",
+    "mflux": "0.24.0",
+    "mlx": "0.32.4",
+    "renderer": "Pinned Q4 Klein 9B KV",
+    "request_conditions": "Same saved blue-shirt person and product bytes, seed 42, three steps, guidance 1.0, neutral conditioning, compiled blocks, native arithmetic. Six serial requests to the resident local service in three alternating pairs. The parser cache may warm between runs. Power and temperature were not controlled.",
+    "clock": "Primary metric is server inference including preparation, sampling and composition. It excludes queue wait and response encoding. Client wall figures additionally cover transfer and, in the recorded tool, local PNG writing and input hashing.",
+    "pairs": 3,
+    "independent_subjects": 1,
+    "full_values_s": [
+      67.13,
+      103.79,
+      100.9
+    ],
+    "clothing_values_s": [
+      62.05,
+      88.1,
+      83.17
+    ],
+    "full_median_s": 100.9,
+    "clothing_median_s": 83.17,
+    "median_difference_s": 17.73,
+    "relative_difference_of_medians_pct": 17.6,
+    "paired_savings_s": [
+      5.08,
+      15.69,
+      17.73
+    ],
+    "fallbacks": 0,
+    "cold_start_measured": false
+  },
+  "figures": {
+    "architecture.png": "f6968cf78a0c7c58b875c7a2ac77b9bf9ba41cf21ebb9b2e96a9c8127490b2c9",
+    "collar-comparison.png": "c7fc525ff7b3e4b36e4145ed06df4488d616cbcc09a30ab220e9dcb75b5d1182",
+    "garment-examples.png": "a0594bb175f7230ebbaeb944e604bb162fdd2dc75c735f15b271668bea58f205",
+    "handoff-comparison.png": "22ad8a1c285347cb32912c6d8313cc55f706e22b1f9e15946f7b0bb12ca675c6",
+    "region-latency.png": "964d58ae3d79a031c778d92a5c637d2c97a2676a24ff712da326e958459ddd66"
+  }
+}

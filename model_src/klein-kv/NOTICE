@@ -1,0 +1,31 @@
+This FLUX Model is licensed by Black Forest Labs Inc. under the FLUX
+Non-Commercial License. Copyright Black Forest Labs Inc. IN NO EVENT SHALL
+BLACK FOREST LABS INC. BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH USE OF THIS MODEL.
+
+WeFit is a modified academic research application. It is not an
+official Black Forest Labs or MFlux product and is not endorsed by either.
+Rights to the model are granted directly by Black Forest Labs under LICENSE.
+The model is not licensed here for commercial or production deployment.
+
+Source model: black-forest-labs/FLUX.2-klein-9b-kv
+MLX/Q4 conversion: mflux-community/flux2-klein-9b-kv-mflux-q4
+Conversion revision: d144dcb1f70540f581ed99930ee61aac21b5c6d6
+Runtime: MFLUX 0.24.0 (MIT), MLX 0.32.4 on the tested Apple Silicon machine.
+
+WeFit modifications: fixed garment-independent instruction embeddings encoded
+once with the pinned encoder; exact export/round-trip verification; no text
+encoder at runtime; materialized reference K/V views; serialized worker-owned
+inference; pure cached-block compilation; neutral source-clothing conditioning;
+clothing-region rendering
+with full-frame fallback; source-photo compositing and pose-failure checks.
+Optional float16 module arithmetic is an inference experiment, not training.
+All transformer layers and the native VAE are retained. No model fine-tuning,
+new foundation model, reproduction of paper accuracy or universal fit guarantee
+is claimed.
+
+The source package includes instruction embeddings, manifest, this notice and
+the full model license. It excludes renderer checkpoints and private photos.
+The license file is the full license linked by the original model card:
+https://huggingface.co/black-forest-labs/FLUX.2-klein-9b-kv-fp8/blob/main/LICENSE

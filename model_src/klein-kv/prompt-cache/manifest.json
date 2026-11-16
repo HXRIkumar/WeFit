@@ -1,0 +1,34 @@
+{
+  "model_repository": "mflux-community/flux2-klein-9b-kv-mflux-q4",
+  "model_revision": "d144dcb1f70540f581ed99930ee61aac21b5c6d6",
+  "mflux_version": "0.24.0",
+  "quantization_bits": 4,
+  "source_dtype": "bfloat16",
+  "stored_dtype": "float32 (exact BF16 values)",
+  "instructions": {
+    "upper": {
+      "text": "Replace only the person's upper-body clothing in image 1 with the exact garment shown in image 2. Reproduce the reference garment's actual cut, color, pattern, material, collar, sleeves, seams and fastenings. Remove the previous top completely instead of layering the new garment over it. Keep the same person, face, hair, skin, body proportions, pose, hands, lower-body clothing, background, camera angle, framing, lighting and photographic grain from image 1. The result is the original natural photograph with just the reference garment fitted to this person's body.",
+      "sha256": "1d28ac102eea80c34d4d5b3d44e1f59c79ec3e4ebf44ed801e89304cd23e90b9",
+      "file_sha256": "b9e3a21a59cc4f0d53350abb9a7b35da4b93b25cba3dc825ef8efa4f063f0910",
+      "shape": [
+        1,
+        512,
+        12288
+      ],
+      "roundtrip_exact": true
+    },
+    "lower": {
+      "text": "Replace only the person's trousers or shorts in image 1 with the exact trousers shown in image 2. Reproduce the reference garment's actual cut, color, pattern, fabric, waistband, seams, fastenings and leg length. Fit the trousers to this person's actual waist, hips, legs and standing pose. Keep the same person, face, hair, skin, body proportions, pose, hands, upper-body clothing, feet, background, camera angle, framing, lighting and photographic grain from image 1. The result is the original natural photograph with just the reference trousers fitted on this person.",
+      "sha256": "e822fc76c035d5379bd8f1840f1b5ba1eb427d181a4c43b5af0363e5471f4859",
+      "file_sha256": "439c6c1c3d004e8949659c93b81b4639f349b4f828f8ab257ba9980ad828701a",
+      "shape": [
+        1,
+        512,
+        12288
+      ],
+      "roundtrip_exact": true
+    }
+  },
+  "seconds": 10.39,
+  "peak_mlx_gb": 4.33
+}
